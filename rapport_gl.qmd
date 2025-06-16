@@ -1,8 +1,10 @@
 ---
-title: "rapport_gl2"
+title: "rapport_gl"
 format: pdf
 editor: visual
 ---
+
+![Logo de l'Ensai](ensai_logo.png)
 
 ## Quarto
 

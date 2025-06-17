@@ -1,10 +1,26 @@
 ---
-title: "rapport_gl"
+title: "Mon rapport en Quarto"
 format: pdf
 editor: visual
+author:
+  - name: "Blanche Neige"
+  - name: "Jiminy Cricket"
+  - name: "Mickey Mouse"
+  - name: "Donald Duck"
+institute: "École nationale de la statistique et de l'analyse de l'information"
+date: "2025-2026"
+toc: true
+lang: fr
+fontsize: 11pt
+papersize: a4
+geometry: top=1.5cm, bottom=1.5cm, left=2.5cm, right=2.5cm
+mainfont: "Times New Roman"
 ---
 
-![Logo de l'Ensai](ensai_logo.png)
+<!-- Quand toc est à "true", cela affiche automatiquement une table des matières dans le document généré. TOC=Table Of Contents -->
+<!-- "lang: fr" à remplacer par "lang: en" si rapport en anglais. Définir la langue du document est utile pour la typographie (par exemple, les espaces autour de la ponctuation ne sont pas les mêmes dans les deux langues), la langue de la table des matières, des dates, le cadre linguistique du PDF généré, etc. -->
+
+![](ensai_logo.png)
 
 ## Quarto
 

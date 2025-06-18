@@ -24,6 +24,22 @@ author:
         department: Department of Mathematics
       - name: HØnefoss Institute
         address: R Tradição 35, Portugal 2950-726
+format: 
+  titlepage-pdf:
+    documentclass: scrbook
+    classoption: ["oneside", "open=any"]
+    number-sections: true
+    toc: true
+    lof: true
+    lot: true
+    titlepage: "ensai_logo"
+    titlepage-ensai_logo: "ensai_logo.png"
+    titlepage-header: "The Publisher"
+    titlepage-footer: |
+      NOAA Fisheries OpenSci\
+      Tools for Open Science\
+      [https://github.com/nmfs-opensci](https://github.com/nmfs-opensci)\
+    keep-tex: true
 ---
 
 
@@ -31,23 +47,23 @@ author:
 
 Some themes need some additional YAML information to work.
 
-### `bg-image`
+### `ensai_logo`
 
 Needs info on the title page geometry so the title doesn't overlap the background image. Also you need to supply the background image and where to put it (UL, upperleft; UR, upperright; BL, bottomleft; BR, bottomright). Note, there are placeholders in the extension, but when you put your own image in, you'll need to add the YAML information.
 
 ```
 format: 
   titlepage-pdf:
-    titlepage: bg-image
+    titlepage: ensai_logo
     titlepage-geometry: 
      - top=3in
      - bottom=1in
      - right=1in
      - left=1in
-    titlepage-bg-image: "img/corner-bg.png"
+    titlepage-ensai_logo: "ensai_logo.png"
     titlepage-theme:
-      bg-image-location: "UL"
-      bg-image-size: 0.5
+      ensai_logo-location: "UL"
+      ensai_logo-size: 0.5
 ```
 
 

@@ -4,59 +4,69 @@ format:
   pdf:
     documentclass: report
     mainfont: "Times New Roman"
-editor: visual
-date: "2025-2026"
 lang: fr
 fontsize: 11pt
 papersize: a4
 geometry: top=1.5cm, bottom=1.5cm, left=2.5cm, right=2.5cm
 ---
-<!-- "lang: fr" à remplacer par "lang: en" si rapport rédigé en anglais. Définir la langue du document est utile pour la typographie (par exemple, les espaces autour de la ponctuation ne sont pas les mêmes dans les deux langues), la langue de la table des matières, des dates, le cadre linguistique du PDF généré, etc. -->
+<!-- « lang: fr » à remplacer par « lang: en » si rapport rédigé en anglais. Définir la langue du document est utile pour la typographie (par exemple, les espaces autour de la ponctuation ne sont pas les mêmes dans les deux langues), la langue de la table des matières, des dates, le cadre linguistique du PDF généré, etc. -->
 
 ```{=latex}
 \begin{titlepage}
 \centering
 
-{\Large\textsc{École nationale de la statistique\\et de l’analyse de l’information}}\\
-\vspace{1.0cm}
-
 \includegraphics{ensai_logo.png}\\
 \vspace{1.0cm}
 
-{\Large\textsc{Rapport dans tel projet}}\\
+{\LARGE\textsc{Rapport de tel projet}}\\
 \vspace{0.5cm}
-{\Large Élèves 1A}
+{\large Élèves 1A}
 
 \vspace{2.5cm}
 
 \rule{\textwidth}{0.5mm}\\
 \vspace{0.8cm}
-{\huge\bfseries Mon rapport en Quarto}\\
+{\huge\bfseries Titre choisi pour mon rapport en Quarto}\\
 \vspace{0.8cm}
 \rule{\textwidth}{0.5mm}\\
 
 \vspace{2.5cm}
 
-\begin{flushleft}
+\noindent
+\begin{minipage}{0.45\textwidth}
+\raggedright
 \emph{Étudiant·e·s :}\\
 Blanche Neige\\
 Peter Pan\\
 Mickey Mouse\\
 Elsa d’Arendelle\\
-\end{flushleft}
+\end{minipage}
 
-\begin{flushright}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\raggedleft
 \emph{Responsable :}\\
-la Fée bleue\\
+la Fée bleue\\[0.3cm]
+\vspace{1.0cm}
 \emph{Encadrant(e) :}\\
 Jiminy Cricket\\
-\end{flushright}
+\end{minipage}
 
 \vfill
+\begin{center}
+École nationale de la statistique et de l’analyse de l’information\\
+2025--2026
+\end{center}
 \end{titlepage}
 
 \tableofcontents
 ```
+
+<!-- Dans « 2025--2026 », les deux traits d’union permettent de faire un tiret long. « 2025--2026 » pourra être remplacé par une date. -->
+
+\pagebreak
+
+<!-- « \pagebreak » génère un saut de page. -->
 
 ## Quarto
 

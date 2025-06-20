@@ -9,9 +9,15 @@ fontsize: 11pt
 papersize: a4
 geometry: top=1.5cm, bottom=1.5cm, left=2.5cm, right=2.5cm
 ---
-<!-- « lang: fr » à remplacer par « lang: en » si rapport rédigé en anglais. Définir la langue du document est utile pour la typographie (par exemple, les espaces autour de la ponctuation ne sont pas les mêmes dans les deux langues), la langue de la table des matières, des dates, le cadre linguistique du PDF généré, etc. -->
 
-```{=latex}
+<!--« lang: fr » à remplacer par « lang: en » si rapport rédigé en anglais. Définir la langue du document est utile pour la typographie (par exemple les espaces autour de la ponctuation ne sont pas les mêmes dans les deux langues), la langue de la table des matières, des dates, le cadre linguistique du PDF généré, etc.-->
+
+<!--« mainfont » définit la police utilisée et « fontsize » la taille de cette police.-->
+
+<!--« geometry » définit les marges de chaque taille du rapport. « top », en haut ; « bottom », en bas ; « left », à gauche ; « right », à droite.-->
+
+<!--La présentation de la page de garde est codée ci-dessous en LaTeX ; page officielle de ce langage de programmation : https://www.latex-project.org/ (en anglais).-->
+
 \begin{titlepage}
 \centering
 
@@ -32,27 +38,23 @@ geometry: top=1.5cm, bottom=1.5cm, left=2.5cm, right=2.5cm
 
 \vspace{2.5cm}
 
-\noindent
-\begin{minipage}{0.45\textwidth}
-\raggedright
+\begin{flushleft}
 \emph{Étudiant·e·s :}\\
 Blanche Neige\\
 Peter Pan\\
 Mickey Mouse\\
 Elsa d’Arendelle\\
-\end{minipage}
+\end{flushleft}
 
-\hfill
-\begin{minipage}{0.45\textwidth}
-\raggedleft
+\begin{flushright}
 \emph{Responsable :}\\
-la Fée bleue\\[0.3cm]
+la Fée bleue\\
 \vspace{1.0cm}
 \emph{Encadrant(e) :}\\
 Jiminy Cricket\\
-\end{minipage}
+\end{flushright}
 
-\vfill
+\vfill 
 \begin{center}
 École nationale de la statistique et de l’analyse de l’information\\
 2025--2026
@@ -60,33 +62,89 @@ Jiminy Cricket\\
 \end{titlepage}
 
 \tableofcontents
-```
 
-<!-- Dans « 2025--2026 », les deux traits d’union permettent de faire un tiret long. « 2025--2026 » pourra être remplacé par une date. -->
+<!--« vspace » définit la taille verticale d’un espace à laisser vide.-->
+
+<!--« flushleft », « flushright » et « center » : alignements à gauche, à droite et centré.-->
+
+<!--« \emph » met du texte en italique dans un texte en romain et vice versa.-->
+
+<!--« vfill » renvoie le texte codé par la suite (ici jusqu’à « \end{titlepage} » en bas de la page.-->
+
+<!--Dans « 2025--2026 », les deux traits d’union permettent de faire un tiret long. « 2025--2026 » pourra être remplacé par une date.-->
+
+Dans la table des matières du PDF généré en ligne, les titres sont cliquables et renvoient aux sections concernées plus bas dans le docuement.
 
 \pagebreak
 
 <!-- « \pagebreak » génère un saut de page. -->
 
-## Quarto
+# Titre de premier niveau
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+## Titre de deuxième niveau
+
+Un titre de premier niveau est introduit dans le langage Quarto par 1 croisillon (#), un titre de deuxième niveau par 2 croisillons (##), de troisième niveau par 3 croisillons (###), etc. Attention, seuls les titres des trois premiers niveaux paraissent dans la table des matières ; pas les titres de quatrième niveau ou au-delà.
+
+## Autre titre de deuxième niveau
+
+Tulaliloo ti amo, chika banana ! Minion power, kaboom finale !
+
+### Exemple
+
+Bee-do bee-do ! Fire in the pancako ! To the rescue-o, pronto-pronto !
+
+#### Exemple dans l’exemple
+
+Bananaaaa… oh no, le banana kaput ! Omelette du fromage… plan B.
+
+#### Autre exemple
+
+Papoy boom-boom! Hahaha, tutu balala ! Bello ! Me want banana gelato subito !
+
+### Dernier exemple
+
+Tank yu veddy mucho, boss man ! Me zip-zap finisho la missiono !
 
 \pagebreak
 
-## Running Code
+# Utilité de Quarto et utilisation
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+Un document Quarto sur R vous permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : site officiel <https://quarto.org> (en anglais). Pour faire un lien cliquable sur une page externe (comme dans la phrase précédente), il faut encadrer le lien par des chevrons simples (« \< » et « \> » respectivement avant et après le lien).
+
+L’avantage par rapport aux autres logiciels de traitement de texte est que cela permet d’intégrer du code (ici R) directement dans le document, et d’afficher les résultats (graphiques, tableaux, etc.) automatiquement. Cela favorise une reproductibilité scientifique : on peut voir et exécuter le code à l’origine des résultats.
+
+Les résultats sont ainsi générés dynamiquement à partir des données. Si les données changent, il suffit de recompiler le document : tout se met à jour automatiquement (textes, graphiques, analyses…). Cela évite les erreurs de copier-coller ou les résultats obsolètes.
+
+## Mix entre texte et code intégré
+
+Lorsqu’on clique sur le bouton **Render** de RStudio (ou combinaisons des touches Ctrl+Maj+K), un PDF est généré incluant à la fois le texte et le code intégré. On peut intégrer du code comme suit en l’encadrant entre une première ligne « `` ``` ``{r} » et une dernière « `` ``` `` » (« `` ` `` » est le symbole accent grave, appelé aussi *backtick* ou *backquote* depuis ses noms en anglais).
 
 ```{r}
 1 + 1
 ```
 
-You can add options to executable code like this
+Vous pouvez aussi ajouter des options au code exécutable comme ceci (derrière « `#|` », c’est-à-dire un croisillon et une barre verticale) :
 
 ```{r}
 #| echo: false
 2 * 2
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+L’option « `echo: false` » désactive l’impression du code (seul le résultat final est affiché).
+
+## Quelques conventions propres à Quarto pour la typographie
+
+Points typographiques : pour qu’un symbole (accent grave ou autre) ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4).
+
+Les astérisques (« `` * `` ») servent à mettre en gras ou en italique du texte. En encadrant avec un astérisque de chaque côté, on met `` * ``*ce texte en italique*`` * `` ; avec deux astérisques, on met `` ** ``**ce texte en gras**`` ** `` ; avec trois, on le met à la fois `` *** ``***en gras et en italique***`` *** ``. Pour ceux qui connaissent, cela utilise sur ce point les mêmes conventions que la plateforme Discord.
+
+Lorsque l’on encadre une portion de texte avec un seul accent grave de chaque côté, ce qui est encadré est affiché dans une police à chasse fixe, c’est-à-dire une police où chaque caractère occupe le même espace horizontal que les autres caractères. C’est, dans les textes parlant informatique, un type de police souvent utilisé pour représenter le contenu du code utilisé. Exemples :
+
+- si on tape « `` ` `` `Machin` `` ` `` » dans le code, cela affiche « `Machin` » ;
+
+- alors que si on tape « `Machin` », ça affiche « Machin ».
+
+Comme on peut le voir dans les deux exemples ci-dessus, dans le code, un saut de ligne suivi d’une ligne commençant pour un trait d’union est retranscrit par une ligne commençant par une puce.
+
+-- Si on veut réellement commencer la ligne par un tiret, il faut entamer la ligne par deux traits d’union comme pour cette phrase.
+

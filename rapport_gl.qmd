@@ -138,15 +138,15 @@ L’option « `echo: false` » désactive l’impression du code (seul le résul
 
 ## Quelques conventions propres à Quarto pour la typographie
 
-Points typographiques : pour que le symbole accent grave ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4). Pour les autres caractères spéciaux (« \* », « \\ », « \# »… liste non exhaustive), c’est la barre oblique inversée (« \\ ») qui sert à désactiver la fonction spéciale habituelle de ce caractère en Quarto en la mettant juste devant ce caractère.
+Points typographiques : pour que le symbole accent grave ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4). Pour les autres caractères spéciaux (« \* », « \\ », « \# »… liste non exhaustive), c’est la barre oblique inversée (« \\ ») qui sert à désactiver la fonction spéciale habituelle de ces caractères en Quarto en la mettant juste devant chacun d’eux.
 
 Les astérisques (« \* ») servent à mettre en gras ou en italique du texte. En encadrant avec un astérisque de chaque côté, on met \**ce texte en italique*\* ; avec deux astérisques, on met \*\***ce texte en gras**\*\* ; avec trois, on le met à la fois \*\*\****en gras et en italique***\*\*\*. Pour ceux qui connaissent, cela utilise sur ce point les mêmes conventions que la plateforme Discord.
 
 Lorsque l’on encadre une portion de texte avec un seul accent grave de chaque côté, ce qui est encadré est affiché dans une police à chasse fixe, c’est-à-dire une police où chaque caractère occupe le même espace horizontal que les autres caractères. C’est, dans les textes parlant informatique, un type de police souvent utilisé pour représenter le contenu du code utilisé. Exemples :
 
-- si on tape « `` ` `` `Machin` `` ` `` » dans le code, cela affiche « `Machin` » ;
+- si on tape « `` ` `` `Machin` `` ` `` » dans le code, cela affiche « ` Machin ` » où le M majuscule n’est pas plus large ou le i minuscule pas moins large que les autres lettres ;
 
-- alors que si on tape « `Machin` », ça affiche « Machin ».
+- alors que si on tape « `Machin` », ça affiche « Machin » où la chasse est différente pour chaque caractère.
 
 Comme on peut le voir dans les deux exemples ci-dessus, dans le code, un saut de ligne suivi d’une ligne commençant pour un trait d’union est retranscrit par une ligne commençant par une puce.
 

@@ -16,7 +16,7 @@ geometry: top=1.5cm, bottom=1.5cm, left=2.5cm, right=2.5cm
 
 <!--« geometry » définit les marges de chaque taille du rapport. « top », en haut ; « bottom », en bas ; « left », à gauche ; « right », à droite.-->
 
-<!--La présentation de la page de garde est codée ci-dessous en LaTeX ; page officielle de ce langage de programmation : https://www.latex-project.org/ (en anglais).-->
+<!--La présentation de la page de titre est codée ci-dessous en LaTeX ; page officielle de ce langage de programmation : https://www.latex-project.org/ (en anglais).-->
 
 \begin{titlepage}
 \centering
@@ -61,8 +61,6 @@ Jiminy Cricket\\
 \end{center}
 \end{titlepage}
 
-\tableofcontents
-
 <!--« vspace » définit la taille verticale d’un espace à laisser vide.-->
 
 <!--« flushleft », « flushright » et « center » : alignements à gauche, à droite et centré.-->
@@ -73,7 +71,11 @@ Jiminy Cricket\\
 
 <!--Dans « 2025--2026 », les deux traits d’union permettent de faire un tiret long. « 2025--2026 » pourra être remplacé par une date.-->
 
+\tableofcontents
+
 Dans la table des matières du PDF généré en ligne, les titres sont cliquables et renvoient aux sections concernées plus bas dans le docuement.
+
+Attention : contrairement aux logiciels de traitement de texte les plus couramment utilisés (comme Microsoft Word ou Libre Office Writer), la page de titre n’est pas prise en compte pour la numérotation des pages (un peu comme s’il s’agissait de la couverture d’un livre). Pour ça, pour ceux qui connaissent, c’est pareil que pour un document tapé avec LaTeX sur Overleaf. La page 1, ici, est celle de la table des matières.
 
 \pagebreak
 
@@ -111,7 +113,7 @@ Tank yu veddy mucho, boss man ! Me zip-zap finisho la missiono !
 
 Un document Quarto sur R vous permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : site officiel <https://quarto.org> (en anglais). Pour faire un lien cliquable sur une page externe (comme dans la phrase précédente), il faut encadrer le lien par des chevrons simples (« \< » et « \> » respectivement avant et après le lien).
 
-L’avantage par rapport aux autres logiciels de traitement de texte est que cela permet d’intégrer du code (ici R) directement dans le document, et d’afficher les résultats (graphiques, tableaux, etc.) automatiquement. Cela favorise une reproductibilité scientifique : on peut voir et exécuter le code à l’origine des résultats.
+L’avantage par rapport aux autres logiciels de traitement de texte est que cela permet d’intégrer du code (ici R) directement dans le document et d’afficher les résultats (graphiques, tableaux, etc.) automatiquement. Cela favorise une reproductibilité scientifique : on peut voir et exécuter le code à l’origine des résultats.
 
 Les résultats sont ainsi générés dynamiquement à partir des données. Si les données changent, il suffit de recompiler le document : tout se met à jour automatiquement (textes, graphiques, analyses…). Cela évite les erreurs de copier-coller ou les résultats obsolètes.
 
@@ -122,6 +124,8 @@ Lorsqu’on clique sur le bouton **Render** de RStudio (ou combinaisons des touc
 ```{r}
 1 + 1
 ```
+
+Ces sections de code intégré au texte et exécutable sont appelées des *chunks*. Quand on clique sur le bouton **+c** de RStudio (ou Ctrl+Maj+I), un *chunk* est automatiquement rajouté après l’emplacement du curseur.
 
 Vous pouvez aussi ajouter des options au code exécutable comme ceci (derrière « `#|` », c’est-à-dire un croisillon et une barre verticale) :
 
@@ -134,9 +138,9 @@ L’option « `echo: false` » désactive l’impression du code (seul le résul
 
 ## Quelques conventions propres à Quarto pour la typographie
 
-Points typographiques : pour qu’un symbole (accent grave ou autre) ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4).
+Points typographiques : pour que le symbole accent grave ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4). Pour les autres caractères spéciaux (« \* », « \\ », « \# »… liste non exhaustive), c’est la barre oblique inversée (« \\ ») qui sert à désactiver la fonction spéciale habituelle de ce caractère en Quarto en la mettant juste devant ce caractère.
 
-Les astérisques (« `` * `` ») servent à mettre en gras ou en italique du texte. En encadrant avec un astérisque de chaque côté, on met `` * ``*ce texte en italique*`` * `` ; avec deux astérisques, on met `` ** ``**ce texte en gras**`` ** `` ; avec trois, on le met à la fois `` *** ``***en gras et en italique***`` *** ``. Pour ceux qui connaissent, cela utilise sur ce point les mêmes conventions que la plateforme Discord.
+Les astérisques (« \* ») servent à mettre en gras ou en italique du texte. En encadrant avec un astérisque de chaque côté, on met \**ce texte en italique*\* ; avec deux astérisques, on met \*\***ce texte en gras**\*\* ; avec trois, on le met à la fois \*\*\****en gras et en italique***\*\*\*. Pour ceux qui connaissent, cela utilise sur ce point les mêmes conventions que la plateforme Discord.
 
 Lorsque l’on encadre une portion de texte avec un seul accent grave de chaque côté, ce qui est encadré est affiché dans une police à chasse fixe, c’est-à-dire une police où chaque caractère occupe le même espace horizontal que les autres caractères. C’est, dans les textes parlant informatique, un type de police souvent utilisé pour représenter le contenu du code utilisé. Exemples :
 

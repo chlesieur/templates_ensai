@@ -73,37 +73,45 @@ Jiminy Cricket\\
 
 \tableofcontents
 
-Dans la table des matières du PDF généré en ligne, les titres sont cliquables et renvoient aux sections concernées plus bas dans le docuement.
+Pour faire apparaître cette page, il faut saisir la ligne « `\tableofcontents` » à l’endroit souhaité. Par défaut, la page est appelée « Table des matières », si on veut la renommer « Sommaire », on fait précéder la ligne précédente par la ligne « `\renewcommand{\contentsname}{Sommaire}` ».
 
-Attention : contrairement aux logiciels de traitement de texte les plus couramment utilisés (comme Microsoft Word ou Libre Office Writer), la page de titre n’est pas prise en compte pour la numérotation des pages (un peu comme s’il s’agissait de la couverture d’un livre). Pour ça, pour ceux qui connaissent, c’est pareil que pour un document tapé avec LaTeX sur Overleaf. La page 1, ici, est celle de la table des matières.
+→ Quelle différence entre un sommaire et une table des matières ?
+
+Généralement, un sommaire est plus ou moins détaillé (parfois juste avec les grandes parties et sans numéro de page) et toujours en début de document quand une table des matières, plus souvent en fin de document, rentre dans les détails de chaque section toujours liée à la page où elle débute. Dans les faits, les deux termes sont souvent employés l’un pour l’autre, surtout quand c’est détaillé (ce qui est plus habituel d’une table des matières) tout en étant à la fois en début de document (ce qui est plus habituel d’un sommaire). Étant ce qui est attendu ici, le nom de cette page sera à la convenance personnelle des rédacteurs du rapport.
+
+Dans le PDF généré en ligne, les titres sont cliquables et renvoient aux sections concernées plus bas dans le document.
+
+Attention : contrairement aux logiciels de traitement de texte les plus couramment utilisés (comme Microsoft Word ou Libre Office Writer), la page de titre n’est pas prise en compte pour la numérotation des pages (un peu comme s’il s’agissait de la couverture d’un livre). Pour ça, pour ceux qui connaissent, c’est pareil que pour un document tapé avec LaTeX sur Overleaf. La page 1 est la première page après la page de titre soit ici la table des matières.
 
 \pagebreak
 
 <!-- « \pagebreak » génère un saut de page. -->
 
-# Titre de premier niveau
+# \# Titre de premier niveau
 
-## Titre de deuxième niveau
+## \#\# Titre de deuxième niveau
 
 Un titre de premier niveau est introduit dans le langage Quarto par 1 croisillon (#), un titre de deuxième niveau par 2 croisillons (##), de troisième niveau par 3 croisillons (###), etc. Attention, seuls les titres des trois premiers niveaux paraissent dans la table des matières ; pas les titres de quatrième niveau ou au-delà.
 
-## Autre titre de deuxième niveau
+Il faut un espace entre les croisillons et le titre choisi de la section.
+
+## \#\# Autre titre de deuxième niveau
 
 Tulaliloo ti amo, chika banana ! Minion power, kaboom finale !
 
-### Exemple
+### \#\#\# Exemple
 
 Bee-do bee-do ! Fire in the pancako ! To the rescue-o, pronto-pronto !
 
-#### Exemple dans l’exemple
+#### \#\#\# Exemple dans l’exemple
 
 Bananaaaa… oh no, le banana kaput ! Omelette du fromage… plan B.
 
-#### Autre exemple
+#### \#\#\#\# Autre exemple
 
 Papoy boom-boom! Hahaha, tutu balala ! Bello ! Me want banana gelato subito !
 
-### Dernier exemple
+### \#\#\# Dernier exemple
 
 Tank yu veddy mucho, boss man ! Me zip-zap finisho la missiono !
 
@@ -119,7 +127,7 @@ Les résultats sont ainsi générés dynamiquement à partir des données. Si le
 
 ## Mix entre texte et code intégré
 
-Lorsqu’on clique sur le bouton **Render** de RStudio (ou combinaisons des touches Ctrl+Maj+K), un PDF est généré incluant à la fois le texte et le code intégré. On peut intégrer du code comme suit en l’encadrant entre une première ligne « `` ``` ``{r} » et une dernière « `` ``` `` » (« `` ` `` » est le symbole accent grave, appelé aussi *backtick* ou *backquote* depuis ses noms en anglais).
+Lorsqu’on clique sur le bouton **Render** de RStudio (ou combinaisons des touches Ctrl+Maj+K), un PDF est généré incluant à la fois le texte et le code intégré. On peut intégrer du code comme suit en l’encadrant entre une première ligne « ` ```{r}` » et une dernière « ` ``` ` » (« `` ` `` » est le symbole accent grave, appelé aussi *backtick* ou *backquote* depuis ses noms en anglais).
 
 ```{r}
 1 + 1
@@ -138,7 +146,7 @@ L’option « `echo: false` » désactive l’impression du code (seul le résul
 
 ## Quelques conventions propres à Quarto pour la typographie
 
-Points typographiques : pour que le symbole accent grave ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4). Pour les autres caractères spéciaux (« \* », « \\ », « \# »… liste non exhaustive), c’est la barre oblique inversée (« \\ ») qui sert à désactiver la fonction spéciale habituelle de ces caractères en Quarto en la mettant juste devant chacun d’eux.
+Points typographiques : pour que le symbole accent grave ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4). Pour les autres caractères spéciaux (« \* », « \\ », « \# », « \< »… liste non exhaustive), c’est la barre oblique inversée (« \\ ») qui sert à désactiver la fonction spéciale habituelle de ces caractères en Quarto en la mettant juste devant chacun d’eux.
 
 Les astérisques (« \* ») servent à mettre en gras ou en italique du texte. En encadrant avec un astérisque de chaque côté, on met \**ce texte en italique*\* ; avec deux astérisques, on met \*\***ce texte en gras**\*\* ; avec trois, on le met à la fois \*\*\****en gras et en italique***\*\*\*. Pour ceux qui connaissent, cela utilise sur ce point les mêmes conventions que la plateforme Discord.
 
@@ -146,9 +154,52 @@ Lorsque l’on encadre une portion de texte avec un seul accent grave de chaque 
 
 - si on tape « `` ` `` `Machin` `` ` `` » dans le code, cela affiche « ` Machin ` » où le M majuscule n’est pas plus large ou le i minuscule pas moins large que les autres lettres ;
 
-- alors que si on tape « `Machin` », ça affiche « Machin » où la chasse est différente pour chaque caractère.
+- alors que si on tape « `Machin` », ça affiche « Machin » dans la police choisie en début de document, idéalement dans une police où la chasse est différente pour chaque caractère.
 
 Comme on peut le voir dans les deux exemples ci-dessus, dans le code, un saut de ligne suivi d’une ligne commençant pour un trait d’union est retranscrit par une ligne commençant par une puce.
 
 -- Si on veut réellement commencer la ligne par un tiret, il faut entamer la ligne par deux traits d’union comme pour cette phrase.
 
+## Renvois
+
+### Notes de bas de page
+
+Pour faire une note de bas de page, il faut mettre à l’endroit souhaité un nom en chiffres ou en lettres précédé d’un accent circonflexe entre crochets comme ceci : « `[^5]` » et cela donne [^5] puis dans un paragraphe suivant, on fait le rappel de la note de la même façon avec le texte associé après deux-points.
+
+[^5]: Voici le contenu de la note de bas de page qui apparaîtra en bas de la même page.
+
+Test avec « `[^a]` »[^a].
+
+[^a]: Ça marche aussi avec une lettre.
+
+Test avec « `[^bidule]` »[^bidule].
+
+[^bidule]: Ça marche aussi avec une note qui porte un nom.
+
+Test avec « `[^fan2foot]` »[^fan2foot].
+
+[^fan2foot]: Ça marche aussi avec une note qui porte un nom qui mixe chiffres et lettres.
+
+Comme on le voit, le document PDF généré numérote automatiquement les notes de page quel que soit le nom de la note. Et si on passe à la page suivante, la numérotation continue, on ne recommence pas à 1.
+
+### Renvois vers la page des références
+
+Voici un lien interne vers la [page des références](#pagedesreferences). Le lien interne est écrit entre crochets tout de suite suivi (sans espace) entre parenthèses d’un mot-clef (mot précédé d’un croisillon) : « `[page des références](#pagedesreferences)` ». Ce mot-clef est répété à la section souhaitée, en l’occurrence derrière le titre de la section Références et entre accolades : « `{#pagedesreferences}` ».
+
+On peut aussi mettre ce lien interne dans une note de bas de page comme ceci[^ref].
+
+[^ref]: Pour plus d’informations, se référer à la [page des références](#pagedesreferences).
+
+\pagebreak
+
+# Références {#pagedesreferences}
+
+\pagebreak
+
+# Annexes
+
+\pagebreak
+
+# Résumé
+
+Dans certains projets, il pourra être demandé de rédiger un résumé 

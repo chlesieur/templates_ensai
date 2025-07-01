@@ -4,15 +4,23 @@ format:
   pdf:
     documentclass: report
     mainfont: "Times New Roman"
+    header-includes: |
+      \usepackage[bottom]{footmisc}
 lang: fr
 fontsize: 11pt
 papersize: a4
 geometry: top=1.5cm, bottom=1.5cm, left=2.5cm, right=2.5cm
+bibliography: references.bib
+citation: true
+nocite: "@*"
 ---
 
 <!--« lang: fr » à remplacer par « lang: en » si rapport rédigé en anglais. Définir la langue du document est utile pour la typographie (par exemple les espaces autour de la ponctuation ne sont pas les mêmes dans les deux langues), la langue de la table des matières, des dates, le cadre linguistique du PDF généré, etc.-->
 
 <!--« mainfont » définit la police utilisée et « fontsize » la taille de cette police.-->
+
+<!--« header-includes: |
+      \usepackage[bottom]{footmisc} » permet aux notes de bas de page d’être réellement en bas de page et non juste après la dernière ligne de texte (ce qui peut amener à des notes en milieu de page si le texte s’arrête à ce niveau).-->
 
 <!--« geometry » définit les marges de chaque taille du rapport. « top », en haut ; « bottom », en bas ; « left », à gauche ; « right », à droite.-->
 
@@ -182,7 +190,7 @@ Test avec « `[^fan2foot]` »[^fan2foot].
 
 Comme on le voit, le document PDF généré numérote automatiquement les notes de page quel que soit le nom de la note. Et si on passe à la page suivante, la numérotation continue, on ne recommence pas à 1.
 
-### Renvois vers la page des références
+### Renvois vers une autre section du rapport
 
 Voici un lien interne vers la [page des références](#pagedesreferences). Le lien interne est écrit entre crochets tout de suite suivi (sans espace) entre parenthèses d’un mot-clef (mot précédé d’un croisillon) : « `[page des références](#pagedesreferences)` ». Ce mot-clef est répété à la section souhaitée, en l’occurrence derrière le titre de la section Références et entre accolades : « `{#pagedesreferences}` ».
 
@@ -190,16 +198,25 @@ On peut aussi mettre ce lien interne dans une note de bas de page comme ceci[^re
 
 [^ref]: Pour plus d’informations, se référer à la [page des références](#pagedesreferences).
 
+Dans l’exemple ci-dessus, c’est un cas très utile de renvoi vers les références. D’autres cas qui peuvent être très courants : renvoi vers les annexes ou tout bonnement vers une section particulière du rapport (pour comparer deux résultats notamment). Il faudra alors créer autant de mot-clefs entre accolades tout au long du texte pour chaque endroit vers lequel l’on devra pointer.
+
+## Utilisation des références
+
+Allan B. Calhamer, le créateur du jeu de société *Diplomatie*, célèbre jeu basé sur les talents de stratège et de négociateur des participants, a écrit @calhamer1974.
+
 \pagebreak
 
 # Références {#pagedesreferences}
 
+Ceci est la section des références.  
+Les références citées dans le texte sont listées ci-dessous.
+
+\newpage
+
+# Annexes {#pagesdannexes}
+
 \pagebreak
 
-# Annexes
+# Résumé {#pagederesume}
 
-\pagebreak
-
-# Résumé
-
-Dans certains projets, il pourra être demandé de rédiger un résumé 
+Dans certains projets, il pourra être demandé de rédiger un résumé. 

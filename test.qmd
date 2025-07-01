@@ -1,0 +1,27 @@
+---
+title: "Test Références"
+format:
+  pdf:
+    documentclass: article
+    mainfont: "Times New Roman"
+lang: fr
+fontsize: 11pt
+papersize: a4
+geometry: top=2cm, bottom=2cm, left=2.5cm, right=2.5cm
+bibliography: references.bib
+citation: true
+nocite: "@*"
+---
+
+# Introduction
+
+Voici une citation de @calhamer1974.  
+Voici une autre citation non utilisée dans le texte.
+
+# Références
+
+<!-- Ceci donne un peu de "matière" à la section pour que Pandoc la détecte correctement. -->
+Blablabla
+
+# Annexes
+

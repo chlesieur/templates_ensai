@@ -88,7 +88,11 @@ Jiminy Cricket\\
 
 \tableofcontents
 
-Pour faire apparaître cette page, il faut saisir la ligne « `\tableofcontents` » à l’endroit souhaité. Par défaut, la page est appelée « Table des matières », si on veut la renommer « Sommaire », on fait précéder la ligne précédente par la ligne « `\renewcommand{\contentsname}{Sommaire}` ».
+\pagebreak
+
+# Précisions
+
+Pour faire apparaître la page précédente, il faut saisir la ligne « `\tableofcontents` » à l’endroit souhaité. Par défaut, la page est appelée « Table des matières », si on veut la renommer « Sommaire », on fait précéder la ligne précédente par la ligne « `\renewcommand{\contentsname}{Sommaire}` ».
 
 → Quelle différence entre un sommaire et une table des matières ?
 
@@ -100,7 +104,9 @@ Attention : contrairement aux logiciels de traitement de texte les plus couramme
 
 \pagebreak
 
-<!-- « \pagebreak » génère un saut de page. -->
+# Introduction
+
+Écrire ici l’introduction du rapport.
 
 # \# Titre de premier niveau
 
@@ -134,7 +140,7 @@ Tank yu veddy mucho, boss man ! Me zip-zap finisho la missiono !
 
 # Utilité de Quarto et utilisation
 
-Un document Quarto sur R vous permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : site officiel <https://quarto.org> (en anglais). Pour faire un lien cliquable sur une page externe (comme dans la phrase précédente), il faut encadrer le lien par des chevrons simples (« \< » et « \> » respectivement avant et après le lien).
+Un document Quarto sur R permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : site officiel <https://quarto.org> (en anglais). Pour faire un lien cliquable sur une page externe (comme dans la phrase précédente), il faut encadrer le lien par des chevrons simples (« \< » et « \> » respectivement avant et après le lien).
 
 L’avantage par rapport aux autres logiciels de traitement de texte est que cela permet d’intégrer du code (ici R) directement dans le document et d’afficher les résultats (graphiques, tableaux, etc.) automatiquement. Cela favorise une reproductibilité scientifique : on peut voir et exécuter le code à l’origine des résultats.
 
@@ -150,7 +156,7 @@ Lorsqu’on clique sur le bouton **Render** de RStudio (ou combinaisons des touc
 
 Ces sections de code intégré au texte et exécutable sont appelées des *chunks*. Quand on clique sur le bouton **+c** de RStudio (ou Ctrl+Maj+I), un *chunk* est automatiquement rajouté après l’emplacement du curseur.
 
-Vous pouvez aussi ajouter des options au code exécutable comme ceci (derrière « `#|` », c’est-à-dire un croisillon et une barre verticale) :
+On peut aussi ajouter des options au code exécutable comme ceci (derrière « `#|` », c’est-à-dire un croisillon et une barre verticale) :
 
 ```{r}
 #| echo: false
@@ -158,6 +164,53 @@ Vous pouvez aussi ajouter des options au code exécutable comme ceci (derrière 
 ```
 
 L’option « `echo: false` » désactive l’impression du code (seul le résultat final est affiché).
+
+### Davantages d’exemples avec mix entre texte et code intégré
+
+L’exemple suivant est tiré du deuxième T.P. de « statistique avec R » du cours de 1A de 2024-2025.
+
+On charge des packages :
+```{r}
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+```
+
+Il est fréquent que les packages contiennent des bases de données. On va faire apparaître la liste des tables disponibles dans le package « dplyr » en lançant la commande suivante :
+```{r}
+data(package="dplyr")
+```
+
+On va travailler sur la table « starwars ». Pour cela on charge la table avec l’instruction suivante :
+```{r}
+data("starwars")
+```
+
+On veut maintenant étudier la relation entre le poids (« mass ») et la taille (« height »). On commence par enlever toutes les valeurs manquantes de la table pour ces 2 variables :
+```{r}
+starwars<-starwars %>% 
+  filter(is.na(height)==FALSE,
+         is.na(mass)==FALSE)
+```
+
+On représente la variable « mass » (ordonnées) en fonction de la variable « height » (abscisses) sous forme d’un nuage de points :
+```{r}
+ggplot(data=starwars,
+       aes(x = height, y= mass ))+
+  geom_point()
+```
+
+On retire l’observation qui semble aberrante (au vu du graphique précédent) puis on refait le nuage de points entre « mass » et « height » :
+```{r}
+ggplot(data=starwars %>% 
+         filter(mass!=max(mass)),
+       aes(x = height, y= mass ))+
+  geom_point()
+```
+
+Voir [dans les annexes]{#starwars} le contenu de la table.
+
+\pagebreak
 
 ## Quelques conventions propres à Quarto pour la typographie
 
@@ -221,7 +274,7 @@ Test avec « `[^fan2foot]` »[^fan2foot].
 
 Comme on le voit, le document PDF généré numérote automatiquement les notes de page quel que soit le nom de la note. Et si on passe à la page suivante, la numérotation continue, on ne recommence pas à 1.
 
-### Renvois vers une autre section du rapport
+### Renvois vers une autre section du rapport {#renvois}
 
 Voici un lien interne vers la [page des références](#pagedesreferences). Le lien interne est écrit entre crochets tout de suite suivi (sans espace) entre parenthèses d’un mot-clef (mot précédé d’un croisillon) : « `[page des références](#pagedesreferences)` ». Ce mot-clef est répété à la section souhaitée, en l’occurrence derrière le titre de la section Références et entre accolades : « `{#pagedesreferences}` ».
 
@@ -274,6 +327,12 @@ On peut voir dans la [page des références](#pagedesreferences), la présentati
 
 Toujours dans l’en-tête YAML, « `nocite: "@*"` » permet de lister dans le PDF la totalité des références mentionnées dans references.bib. Sans cette ligne, seuls les éléments de la bibliographie listés simultanément dans references.bib et cités dans le corps du document seront listés dans le PDF.
 
+Enfin, pour choisir où les lister, rajouter le code suivant à l’emplacement voulu :
+```text
+::: {#refs}
+:::
+```
+
 Pour citer un élément de la bibliographie dans le corps du document, il faut faire précéder le mot d’appel à ce document précédé d’un arobase et le tout entre crochets. Le mot d’appel est le terme composé des caractères juste derrière l’accolade du document dans references.bib donc ici « `calhamer1974` » pour l’article d’Allan B. Calhamer publié en 1974, « `sharp19784` » pour le livre de Richard Sharp édité en 1978, « `kostick2015` » pour celui de Conor Kostick en 2015 ou encore « `vanmechelen2019` » pour celui d’Erik van Mechelen en 2019.
 
 Cet appel dans le corps du texte sera cliquable et renverra à la ligne de la publication dans le PDF si on choisit cette option dans l’en-tête YAML : « `link-citations: true` ».
@@ -288,15 +347,34 @@ Conor Kostick, historien irlandais et champion de ce jeu, a rédigé en 2015 *Th
 
 # Références {#pagedesreferences}
 
+Voici la liste de toutes les références bibliographiques utiles à la rédaction de ce rapport :
+
 ::: {#refs}
 :::
 
-\newpage
+\pagebreak
+
+# Conclusion
+
+Écrire ici la conclusion du rapport.
+
+\pagebreak
 
 # Annexes {#pagesdannexes}
+
+Dans les annexes, peut figurer le détail des travaux effectués et permettant de faciliter la compréhension des points développés au fil des pages. Cela peut être notamment code, graphiques, tableaux, etc. qui ne sont pas forcément pertinents dans le corps du rapport (parce que trop volumineux, ou pas assez vulgarisés, ou trop peu lisibles...).
+
+Utiliser des renvois depuis le corps du rapport vers cette section comme vu dans la [section « Renvois vers une autre section du rapport »](#renvois) aide le lecteur sur PDF à naviguer au sein du rapport. Il peut aussi y avoir des renvois dans l’autre sens, depuis l’élément en annexe vers l’élement associé dans le corps du rapport.
+
+## Contenu de la table « starwars » {#starwars}
+
+Affichage du contenu de la table « starwars » :
+```{r}
+str(starwars)
+```
 
 \pagebreak
 
 # Résumé {#pagederesume}
 
-Dans certains projets, il pourra être demandé de rédiger un résumé. 
+Dans certains projets (pas nécessairement dans tous), il pourra être demandé de rédiger un résumé (cela sera précisé par le responsable de la matière). Ce résumé sera à écrire dans la même langue que le reste du rapport ou dans deux langues, anglais et français (*idem*).

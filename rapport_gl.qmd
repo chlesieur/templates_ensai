@@ -6,6 +6,8 @@ format:
     mainfont: "Times New Roman"
     header-includes: |
       \usepackage[bottom]{footmisc}
+    text: |
+      \usepackage[dvipsnames]{xcolor}
 lang: fr
 fontsize: 11pt
 papersize: a4
@@ -23,6 +25,9 @@ nocite: "@*"
 
 <!--« header-includes: |
       \usepackage[bottom]{footmisc} » permet aux notes de bas de page d’être réellement en bas de page et non juste après la dernière ligne de texte (ce qui peut amener à des notes en milieu de page si le texte s’arrête à ce niveau).-->
+      
+<!--« text: |
+      \usepackage[dvipsnames]{xcolor} » permet de mettre des portions de texte en couleur.-->
 
 <!--« geometry » définit les marges de chaque taille du rapport. « top », en haut ; « bottom », en bas ; « left », à gauche ; « right », à droite.-->
 
@@ -140,7 +145,9 @@ Tank yu veddy mucho, boss man ! Me zip-zap finisho la missiono !
 
 # Utilité de Quarto et utilisation
 
-Un document Quarto sur R permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : site officiel <https://quarto.org> (en anglais). Pour faire un lien cliquable sur une page externe (comme dans la phrase précédente), il faut encadrer le lien par des chevrons simples (« \< » et « \> » respectivement avant et après le lien).
+Un document Quarto sur R permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : [site officiel de Quarto](https://quarto.org)[^lien] (en anglais).
+
+[^lien]: Pour faire un lien cliquable vers une page externe, voir dans [la section sur les liens externes](#lienexterne).
 
 L’avantage par rapport aux autres logiciels de traitement de texte est que cela permet d’intégrer du code (ici R) directement dans le document et d’afficher les résultats (graphiques, tableaux, etc.) automatiquement. Cela favorise une reproductibilité scientifique : on peut voir et exécuter le code à l’origine des résultats.
 
@@ -165,15 +172,36 @@ On peut aussi ajouter des options au code exécutable comme ceci (derrière « `
 
 L’option « `echo: false` » désactive l’impression du code (seul le résultat final est affiché).
 
-### Davantages d’exemples avec mix entre texte et code intégré
+Je peux arriver au même résultat avec la première ligne « ` ```{r}` » remplacé par « ` ```{r, echo=FALSE}` ». Pas besoin alors de ligne avec l’option.
+
+On peut également faire l’inverse, masquer le résultat et afficher le code en remplaçant la première ligne « ` ```{r}` » par « ` ```{r, results="hide"}` ». Ou tout masquer en remplaçant la première ligne « ` ```{r}` » par « ` ```{r, include=FALSE}` ». Dans les deux derniers cas, les éléments du *chunk* sont bien exécutés.
+
+Exemple avec seulement le résultat :
+
+```{r, echo=FALSE}
+10 - 3
+```
+
+Exemple avec seulement le code :
+
+```{r, results="hide"}
+3 - 5
+```
+
+Exemple où tout est masqué :
+
+```{r, include=FALSE}
+sqrt(2)^6
+```
+
+### Un autre exemple avec mix entre texte et code intégré
 
 L’exemple suivant est tiré du deuxième T.P. de « statistique avec R » du cours de 1A de 2024-2025.
 
-On charge des packages :
-```{r}
+On charge des packages (`dplyr` et `ggplot2`).
+```{r, include=FALSE}
 library(dplyr)
 library(ggplot2)
-library(lubridate)
 ```
 
 Il est fréquent que les packages contiennent des bases de données. On va faire apparaître la liste des tables disponibles dans le package « dplyr » en lançant la commande suivante :
@@ -208,7 +236,40 @@ ggplot(data=starwars %>%
   geom_point()
 ```
 
-Voir [dans les annexes]{#starwars} le contenu de la table.
+Voir [dans les annexes](#starwars) le contenu de la table.
+
+\pagebreak
+
+### Un dernier exemple avec mix entre texte et code intégré
+
+Autre exemple où j’use de la graine numéro *n* du générateur de nombres aléatoires. La graine (« seed » en anglais) permet d’obtenir une reproductibilité des résultats quand l’on fait appel à un processus aléatoire. Pour cela, il faut appeler à chaque fois la même graine (c’est-à-dire le même numéro de graine).
+
+Ci-dessous, on demande pour la graine numéro *n* :  
+-- 31 nombres aléatoires selon la loi normale centrée réduite ;  
+-- 31 nombres aléatoires entre 0 et 1 selon la loi uniforme ;  
+-- 31 nombres entiers aléatoires tirés entre 1 et 10 inclus (avec remise).
+
+```{r}
+n <- 101
+set.seed(n)
+x_loinormale <- rnorm(31, mean = 0, sd = 1)
+x_loiuniforme <- runif(31, min = 0, max = 1)
+x_tirage <- sample(1:10, 31, replace=TRUE)
+```
+
+La moyenne (arrondie à 2 chiffres après la virgule) des 31 valeurs générées par la loi normale est : **`r round(mean(x_loinormale), 2)`**.
+
+Celle (*idem*) de la loi uniforme est : **`r round(mean(x_loiuniforme), 2)`**.
+
+Celle (*idem*) du tirage des nombres entre 1 et 10 est : **`r round(mean(x_tirage), 2)`**.
+
+Si on choisit de relancer tous les calculs avec une autre graine, grâce à Quarto, pas besoin de tout retaper, on change la valeur de *n* dans le *chunk* et on recompile le document. On peut ainsi remplacer 101 par 288, 2045, etc. 
+
+Pour avoir, en dehors d’un *chunk*, une phrase reprenant un résultat issu de code dans R, j’écris, entre deux accents graves (un au début et un à la fin), « `r` » (pour dire que je veux ce code dans R) suivi d’un espace et enfin du code R.  
+Pour le dernier résultat : « `` ` `` `r` `mean(x_tirage)` `` ` `` »  
+ou « `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` » si arrondi à deux chiffres après la « virgule[^virgule] ».
+
+[^virgule]: à propos de virgule, ici R utilise la typographie anglaise pour les nombres et c’est le point qui est utilisé comme séparateur entre partie entière et partie décimale. Pour le remplacer par une virgule comme en français, cf. la [section sur les conventions typographiques](#virgule).
 
 \pagebreak
 
@@ -221,6 +282,16 @@ Points typographiques : pour que le symbole accent grave ne soit pas compris par
 ### Gras et italique
 
 Les astérisques (« \* ») servent à mettre en gras ou en italique du texte. En encadrant avec un astérisque de chaque côté, on met \**ce texte en italique*\* ; avec deux astérisques, on met \*\***ce texte en gras**\*\* ; avec trois, on le met à la fois \*\*\****en gras et en italique***\*\*\*. Pour ceux qui connaissent, cela utilise sur ce point les mêmes conventions que la plateforme Discord.
+
+### Couleur dans le texte
+
+En dehors du code propre à R, pour mettre de la couleur dans le texte, on doit au préalable mettre dans l’en-tête YAML « `text: |` » et, ligne suivante, « `\usepackage[dvipsnames]{xcolor}` ».
+
+Ensuite, le texte à colorer (en rouge ici, « red ») doit être précédé par « `\textcolor{red}{` » et suivi par « `}` ». Pour une autre couleur, on remplace « `red` » par la couleur souhaitée en anglais.
+
+Exemple : « `\textcolor{ForestGreen}{Ce texte est vert foncé.}` » pour « \textcolor{ForestGreen}{Ce texte est vert foncé.} »
+
+On peut choisir le noir, le blanc et 74 autres couleurs. Liste complète des couleurs dans la section 4 d’*[Extending LaTeX’s color facilities: the xcolor package](https://ctan.ceremade.dauphine.fr/macros/latex/contrib/xcolor/xcolor.pdf)* (lien externe).
 
 ### Parler « `code` »
 
@@ -237,6 +308,17 @@ Comme on peut le voir dans les deux exemples ci-dessus, dans le code, un saut de
 ### Tiret
 
 -- Si on veut réellement commencer la ligne par un tiret, il faut entamer la ligne par deux traits d’union comme pour cette phrase.
+
+### Décimales {#virgule}
+
+R utilise la typographie anglaise pour les nombres et c’est le point qui est utilisé comme séparateur entre partie entière et partie décimale.
+
+Dans un rapport en français, pour le remplacer par une virgule comme en français, écrire  
+« `` ` `` `r` \textcolor{red}{format(}`round(mean(x_tirage), 2)`\textcolor{red}{, decimal.mark = ",")}`` ` `` »  
+en rajoutant les éléments en rouge au lieu de  
+« `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` ».
+
+Cela affichera « **`r format(round(mean(x_tirage), 2), decimal.mark = ",")`** » au lieu de « **`r round(mean(x_tirage), 2)`** ».
 
 ## Présentation des paragraphes
 
@@ -283,6 +365,12 @@ On peut aussi mettre ce lien interne dans une note de bas de page comme ceci[^re
 [^ref]: Pour plus d’informations, se référer à la [page des références](#pagedesreferences).
 
 Dans l’exemple ci-dessus, c’est un cas très utile de renvoi vers les références. D’autres cas qui peuvent être très courants : renvoi vers les annexes ou tout bonnement vers une section particulière du rapport (pour comparer deux résultats notamment). Il faudra alors créer autant de mot-clefs entre accolades tout au long du texte pour chaque endroit vers lequel l’on devra pointer.
+
+### Lien externe {#lienexterne}
+
+Le lien externe fonctionne un peu de la même façon que le lien interne : entre crochets tout de suite suivi (sans espace) entre parenthèses de l’adresse de la page souhaitée.
+
+Exemple : « `[site officiel de l’Ensai](https://www.ensai.fr/)` » donne « [site officiel de l’Ensai](https://www.ensai.fr/) ». 
 
 ## Utilisation des références
 

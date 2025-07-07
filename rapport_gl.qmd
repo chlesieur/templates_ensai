@@ -92,11 +92,15 @@ Jiminy Cricket\\
 
 \tableofcontents
 
-\pagebreak
+# Objectifs de ce document
 
-# Précisions
+Ce document sert de modèle pour les rapports de projets de première année à l’Ensai avec quelques recommandations et consignes de base pour la forme. Ce modèle ne traite pas du fond et, en aucun cas, ce document ne se substitue aux consignes données par chaque responsable de projet qui seront toujours prépondérantes par rapport aux éléments figurant ici.
 
-Pour faire apparaître la page précédente, il faut saisir la ligne « `\tableofcontents` » à l’endroit souhaité. Par défaut, la page est appelée « Table des matières », si on veut la renommer « Sommaire », on fait précéder la ligne précédente par la ligne « `\renewcommand{\contentsname}{Sommaire}` ».
+Une fois ce document vidé de son contenu, il en restera le « squelette » qui pourra servir comme base de départ à la rédaction de tout rapport
+
+# Précisions sur la table des matières
+
+Pour afficher la page deux rangs avant celle-ci, il faut saisir la ligne « `\tableofcontents` » à l’endroit souhaité. Par défaut, la page est appelée « Table des matières », si on veut la renommer « Sommaire », on fait précéder la ligne précédente par la ligne « `\renewcommand{\contentsname}{Sommaire}` ».
 
 → Quelle différence entre un sommaire et une table des matières ?
 
@@ -104,9 +108,7 @@ Généralement, un sommaire est plus ou moins détaillé (parfois juste avec les
 
 Dans le PDF généré en ligne, les titres sont cliquables et renvoient aux sections concernées plus bas dans le document.
 
-Attention : contrairement aux logiciels de traitement de texte les plus couramment utilisés (comme Microsoft Word ou Libre Office Writer), la page de titre n’est pas prise en compte pour la numérotation des pages (un peu comme s’il s’agissait de la couverture d’un livre). Pour ça, pour ceux qui connaissent, c’est pareil que pour un document tapé avec LaTeX sur Overleaf. La page 1 est la première page après la page de titre soit ici la table des matières.
-
-\pagebreak
+Attention : contrairement aux logiciels de traitement de texte les plus couramment utilisés (comme Microsoft Word ou Libre Office Writer), la page de titre n’est pas prise en compte pour la numérotation des pages (un peu comme s’il s’agissait de la couverture d’un livre). Pour ça, pour ceux qui connaissent, c’est pareil que pour un document tapé avec LaTeX sur Overleaf. La page 1 est la première page après la page de titre soit ici celle de la table des matières.
 
 # Introduction
 
@@ -142,8 +144,6 @@ Papoy boom-boom! Hahaha, tutu balala ! Bello ! Me want banana gelato subito !
 
 Tank yu veddy mucho, boss man ! Me zip-zap finisho la missiono !
 
-\pagebreak
-
 # Utilité de Quarto et utilisation
 
 Un document Quarto sur R permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : [site officiel de Quarto](https://quarto.org)[^1] (en anglais).
@@ -173,9 +173,10 @@ On peut aussi ajouter des options au code exécutable comme ceci (derrière « `
 
 L’option « `echo: false` » désactive l’impression du code (seul le résultat final est affiché).
 
-Je peux arriver au même résultat avec la première ligne « ```` ```{r} ```` » remplacé par « ```` ```{r, echo=FALSE} ```` ». Pas besoin alors de ligne avec l’option.
+On peut arriver au même résultat avec la première ligne « ```` ```{r} ```` » remplacée par « ```` ```{r, echo=FALSE} ```` ». Pas besoin alors de ligne avec l’option.
 
-On peut également faire l’inverse, masquer le résultat et afficher le code en remplaçant la première ligne « ```` ```{r} ```` » par « ```` ```{r, results="hide"} ```` ». Ou tout masquer en remplaçant la première ligne « ```` ```{r} ```` » par « ```` ```{r, include=FALSE} ```` ». Dans les deux derniers cas, les éléments du *chunk* sont bien exécutés.
+On peut également faire l’inverse, masquer le résultat et afficher le code en remplaçant la première ligne « ```` ```{r} ```` » par « ```` ```{r, results="hide"} ```` ».\
+Ou tout masquer en remplaçant la première ligne « ```` ```{r} ```` » par « ```` ```{r, include=FALSE} ```` ». Dans les deux derniers cas, les éléments du *chunk* sont bien exécutés comme dans les *chunks* précédents où les résultats sont affichés.
 
 Exemple avec seulement le résultat :
 
@@ -192,8 +193,15 @@ Exemple avec seulement le code :
 Exemple où tout est masqué :
 
 ```{r, include=FALSE}
-sqrt(2)^6
+memoire<-sqrt(2)^6
 ```
+
+L’intérêt de cacher tout un *chunk* et son résultat est de gagner de la place en n’affichant pas ce qui a peu de pertinence mais comme le code est tout de même exécuté, on peut faire appel aux résultats mémorisés dans ces *chunks* ultérieurement, soit dans d’autres *chunks* (comme immédiatement ci-dessous) soit dans le texte comme on le verra dans [une section suivante](#appelaunresultatr).
+
+```{r}
+memoire / 8
+```
+
 
 ### Un autre exemple avec mix entre texte et code intégré
 
@@ -247,9 +255,11 @@ Voir [dans les annexes](#starwars) à quoi ressemble le contenu de la table.
 
 \pagebreak
 
-### Un dernier exemple avec mix entre texte et code intégré
+<!--« \pagebreak » force un saut de page. Même sans « \pagebreak », le saut de page est automatique sur le PDF généré par le document Quarto avant chaque titre de premier niveau.-->
 
-Autre exemple où je « plante » la graine numéro *n* du générateur de nombres aléatoires. La graine (« seed » en anglais) permet d’obtenir une reproductibilité des résultats quand l’on fait appel à un processus aléatoire. Pour cela, il faut appeler à chaque fois la même graine (c’est-à-dire le même numéro de graine).
+### Un dernier exemple avec mix entre texte et code intégré {#appelaunresultatr}
+
+Autre exemple où on « plante » la graine numéro *n* du générateur de nombres aléatoires. La graine (« seed » en anglais) permet d’obtenir une reproductibilité des résultats quand l’on fait appel à un processus aléatoire. Pour cela, il faut appeler à chaque fois la même graine (c’est-à-dire le même numéro de graine).
 
 Ci-dessous, on demande pour la graine numéro *n* :\
 -- 31 nombres aléatoires selon la loi normale centrée réduite ;\
@@ -257,7 +267,7 @@ Ci-dessous, on demande pour la graine numéro *n* :\
 -- 31 nombres entiers aléatoires tirés entre 1 et 10 inclus (avec remise).
 
 ```{r}
-n <- 101
+n <- 102
 set.seed(n)
 x_loinormale <- rnorm(31, mean = 0, sd = 1)
 x_loiuniforme <- runif(31, min = 0, max = 1)
@@ -272,7 +282,7 @@ Celle (*idem*) du tirage des nombres entre 1 et 10 est : **`r round(mean(x_tirag
 
 Si on choisit de relancer tous les calculs avec une autre graine, grâce à Quarto, pas besoin de tout retaper, on change la valeur de *n* dans le *chunk* et on recompile le document. On peut ainsi remplacer le numéro de départ par 288, 12045, 52, etc.
 
-Pour avoir, en dehors d’un *chunk*, une phrase reprenant un résultat issu de code dans R, j’écris, entre deux accents graves (un au début et un à la fin), « `r` » (pour dire que je veux ce code dans R) suivi d’une espace et enfin du code R.\
+Pour avoir, en dehors d’un *chunk*, une phrase reprenant un résultat issu de code dans R, on écrit, entre deux accents graves (un au début et un à la fin), « `r` » (pour dire que l’on veut ce code dans le langage R) suivi d’une espace et enfin du code R.\
 Pour le dernier résultat : « `` ` `` `r` `mean(x_tirage)` `` ` `` »\
 ou « `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` » si arrondi à deux chiffres après la « virgule[^2] ».
 
@@ -284,7 +294,7 @@ ou « `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` » si arrondi à deux chiff
 
 ### Affichage de caractères spéciaux
 
-Points typographiques : pour que le symbole accent grave ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4). Pour les autres caractères spéciaux (« \* », « \\ », « \# », « \< »… liste non exhaustive), c’est la barre oblique inversée (« \\ ») qui sert à désactiver la fonction spéciale habituelle de ces caractères en Quarto en la mettant juste devant chacun d’eux.
+Points typographiques : pour que le symbole accent grave ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4). Pour les autres caractères spéciaux (« \* », « \\ », « \# », « \< »… liste non exhaustive), c’est la barre oblique inversée (« \\ »), appelée aussi *backslash* ou *antislash* qui sert à désactiver la fonction spéciale habituelle de ces caractères en Quarto en la mettant juste devant chacun d’eux.
 
 ### Gras et italique
 
@@ -321,13 +331,15 @@ Comme on peut le voir dans les deux exemples ci-dessus, dans le code, un saut de
 
 #### Espace et ponctuation
 
-En français (sauf français du Canada), les signes de ponctuation composés d’au moins deux éléments (« : », « ; », « ? », etc.) sont précédés par une espace (à l’exception des points de suspension et du guillemet ouvrant si celui-ci suit une apostrophe). En anglais, pas d’espace avant ces signes de ponctuation sauf pour le guillemet ouvrant.
+En français[^Canada], les signes de ponctuation dits doubles car composés de deux éléments (« : », « ; », « ? », « ! ») sont précédés par une espace. En anglais, pas d’espace avant ces signes de ponctuation.
+
+[^Canada]: Sauf en français du Canada.
 
 Pour les espaces avant les signes de ponctuation, le document Quarto sur R gère cela au moment où le PDF est créé. Ainsi, selon, si dans l’en-tête YAML, on a indiqué « lang: fr » ou « lang: en », les espaces seront respectivement automatiquement rajoutées ou supprimées.
 
 #### Guillemets
 
-Le style de guillemets n’est pas le même. Guillemets français : « texte » (avec espaces avant et après le texte). Guillemets anglais des États-Unis : “texte” (sans espaces). Guillemets anglais du Royaume-Uni : ‘texte’ (sans espaces). Les guillemets anglais des États-Unis sont souvent utilisés en français pour du texte entre guillemets imbriqués dans un extrait lui-même entre guillemets. Exemple :
+Le style de guillemets n’est pas le même. Guillemets français : « texte » (avec espaces avant et après le texte[^Canada]). Guillemets anglais des États-Unis : “texte” (sans espaces). Guillemets anglais du Royaume-Uni : ‘texte’ (sans espaces). Les guillemets anglais des États-Unis sont souvent utilisés en français pour du texte entre guillemets imbriqués dans un extrait lui-même entre guillemets. Exemple :
 
 Il lui a alors répondu : « Mais vous m’aviez dit “on y va !” à ce moment-là ».
 
@@ -343,15 +355,15 @@ Les noms de langues ont une lettre initiale minuscule en français, majuscule en
 
 #### Abréviations
 
-Les abréviations en français se terminent généralement (pas toujours) par un point. Les abréviations anglaises souvent sans point (et il y a une différence entre les conventions américaines et britanniques). Ne pas hésiter à consulter des listes d’abréviations courantes pour ne pas se tromper.
+Les abréviations en français se terminent généralement (pas toujours) par un point. Les abréviations anglaises du Royaume-Uni sont souvent sans point quand les mêmes abréviations anglaises des États-Unis en comportent souvent une. Ne pas hésiter à consulter des listes d’abréviations courantes pour ne pas se tromper.
 
-### Décimales {#virgule}
+### Décimale et séparateurs de milliers {#virgule}
 
-R utilise la typographie anglaise pour les nombres et c’est le point qui est utilisé comme séparateur entre partie entière et partie décimale.
+R utilise la typographie anglaise, et donc le point, pour le séparateur entre partie entière et partie décimale.
 
-Dans un rapport en français, pour le remplacer par une virgule comme en français, écrire\
-« `` ` `` `r` \textcolor{red}{format(}`round(mean(x_tirage), 2)`\textcolor{red}{, decimal.mark = ",")}`` ` `` »\
-en rajoutant les éléments en rouge au lieu de\
+Dans un rapport en français, pour le remplacer par une virgule comme en français, écrire\ 
+« `` ` `` `r` `format(round(mean(x_tirage), 2), decimal.mark = ",")` `` ` `` »\ 
+au lieu de\
 « `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` ».
 
 Cela affichera « **`r format(round(mean(x_tirage), 2), decimal.mark = ",")`** » au lieu de « **`r round(mean(x_tirage), 2)`** ».
@@ -361,46 +373,42 @@ v <- 1000 + 5000
 w <- 10000 + 51425
 ```
 
-Le premier résultat est `r v` et le second est `r w`. Comme on le voit ici, R n’utilise pas les séparateurs de milliers, mais si vous devez écrire un nombre avec beaucoup de chiffres, le séparateur de milliers est une espace en français et une virgule en anglais, respectivement : « 61 425 » et « 61,425 ».
+Ici on demande dans une phrase d’afficher les deux valeurs ci-dessus de *v* et de *w* : « le premier résultat est `r v` et le second est `r w` ». On le voit, par défaut quand Quarto fait appel à des résultats de R, il n’utilise pas les séparateurs de milliers (en effet, il écrit les nombres à 4 chiffres d’un seul bloc et use d’une notation scientifique avec une puissance de 10 si les nombres en comportent 5 ou plus).
+
+Pour contraindre Quarto à générer le nombre sans notation scientifique dans le PDF, on se sert d’une option supplémentaire dans la même fonction *format* déjà utilisé plus haut. Écrire alors « `` ` `` `r` `format(w, scientific = FALSE)` `` ` `` » pour afficher « **`r format(w, scientific = FALSE)`** »
+
+Problème qui apparaît, le séparateur de milliers n’est toujours pas utilisé. Il faut donc le rajouter que le rapport soit en français ou en anglais. Et rajouter une espace en français ou une virgule en anglais, respectivement : « 61 425 » et « 61,425 ». Écrire alors dans un texte en français « `` ` `` `r` `format(w, big.mark = " ", scientific = FALSE)` `` ` `` » pour afficher « **`r format(w, big.mark = " ", scientific = FALSE)`** ». Ou avec « `big.mark = ","` » si rapport en anglais.
 
 ## Présentation des paragraphes
 
 ### Passage à la ligne
 
-Pour passer à la ligne sans créer de nouveau paragraphe, terminer une ligne par deux espaces et appuyer sur « `Entrée` » afin d’écrire la ligne suivante.\
-Comme ici : on peut le vérifier dans le code source en naviguant entre les deux lignes avec les flèches du clavier.
+Pour passer à la ligne sans créer un nouveau paragraphe dans le PDF, il faut terminer une ligne par deux espaces et appuyer sur « `Entrée` » afin d’écrire la ligne suivante. La barre oblique inversée (« \\ ») en fin de ligne a la même fonctionnalité que les deux espaces.\
+Lorsque l’on passe à la ligne après deux espaces, il est possible lors d’un enregistrement du document que RStudio transforme automatiquement les deux espaces par une barre oblique inversée.
 
 ### Création d’un nouveau paragraphe
 
 Le plus simple (car le plus lisible) est de sauter une ligne en laissant une ligne vide.
 
-Si on passe à la ligne sans sauter de ligne et sans les deux espaces à la ligne précédente, cela écrira tout à la suite. Comme ce qui est écrit ici.
+Si on passe à la ligne sans sauter de ligne et sans les deux espaces (ou la barre oblique inversée) à la ligne précédente, cela écrira tout à la suite dans le PDF.
+
+De la même manière que décrit dans la section précédente, lorsque l’on passe à la ligne après zéro ou une seule espace, il est possible lors d’un enregistrement du document que RStudio supprime automatiquement le passage à la ligne dans le code et ne garde qu’une espace.
 
 ## Renvois {#renvois}
 
 ### Notes de bas de page
 
-Pour faire une note de bas de page, il faut mettre à l’endroit souhaité un nom en chiffres ou en lettres précédé d’un accent circonflexe entre crochets comme ceci : « `[^5]` » et cela donne [^3] puis dans un paragraphe suivant, on fait le rappel de la note de la même façon avec le texte associé après deux-points.
+Pour faire une note de bas de page, il faut mettre à l’endroit souhaité un nom en chiffres ou en lettres précédé d’un accent circonflexe entre crochets comme ceci : « `[^6]` » et cela donne [^6] puis dans un paragraphe suivant, on fait le rappel de la note de la même façon avec le texte associé après deux-points.
 
-[^3]: Voici le contenu de la note de bas de page qui apparaîtra en bas de la même page.
+[^6]: Voici le contenu de la note de bas de page qui apparaîtra en bas de la même page.
 
-Test avec « `[^a]` »[^4].
+Quel que soit le nom choisi pour le renvoi vers les notes de bas de page, le document PDF généré numérote automatiquement les notes de page. Et si on passe à la page suivante, la numérotation continue, on ne recommence pas à 1.
 
-[^4]: Ça marche aussi avec une lettre.
-
-Test avec « `[^bidule]` »[^5].
-
-[^5]: Ça marche aussi avec une note qui porte un nom.
-
-Test avec « `[^fan2foot]` »[^6].
-
-[^6]: Ça marche aussi avec une note qui porte un nom qui mixe chiffres et lettres.
-
-Comme on le voit, le document PDF généré numérote automatiquement les notes de page quel que soit le nom de la note. Et si on passe à la page suivante, la numérotation continue, on ne recommence pas à 1.
+À noter : lors d’un enregistrement, il se peut que RStudio ait automatiquement remplacé les noms que vous avez choisi pour les notes de bas de page par sa propre numérotation aussi dans le code (pas seulement dans le PDF). 
 
 ### Renvois vers une autre section du rapport {#renvois}
 
-Voici un lien interne vers la [page des références](#pagedesreferences). Le lien interne est écrit entre crochets tout de suite suivi (sans espace) entre parenthèses d’un mot-clef (mot précédé d’un croisillon) : « `[page des références](#pagedesreferences)` ». Ce mot-clef est répété à la section souhaitée, en l’occurrence derrière le titre de la section Références et entre accolades : « `{#pagedesreferences}` ».
+Voici un lien interne vers la [page des références](#pagedesreferences). Le lien interne est écrit entre crochets tout de suite suivi (sans espace) entre parenthèses d’un mot-clef (mot précédé d’un croisillon) : « `[page des références](#pagedesreferences)` ». Ce mot-clef est répété à la section souhaitée, entre accolades et forcément derrière le titre d’une section, en l’occurrence ici derrière le titre de la section Références : « `{#pagedesreferences}` ».
 
 On peut aussi mettre ce lien interne dans une note de bas de page comme ceci[^7].
 
@@ -474,13 +482,9 @@ Allan B. Calhamer, l’auteur américain du jeu de société *Diplomatie*, cél�
 
 Conor Kostick, historien irlandais et champion de ce jeu, a rédigé en 2015 *The Art of Correspondence in the Game of Diplomacy*, un ouvrage avec de nombreux conseils pour mieux gérer les phases de négociation à *Diplomatie* [@kostick2015].
 
-\pagebreak
-
 # Conclusion
 
 Écrire ici la conclusion du rapport.
-
-\pagebreak
 
 # Références {#pagedesreferences}
 
@@ -488,8 +492,6 @@ Voici la liste de toutes les références bibliographiques utiles à la rédacti
 
 ::: {#refs}
 :::
-
-\pagebreak
 
 # Annexes {#pagesdannexes}
 
@@ -504,8 +506,6 @@ Affichage du contenu de la table « starwars » :
 ```{r}
 str(starwars)
 ```
-
-\pagebreak
 
 # Résumé {#pagederesume}
 

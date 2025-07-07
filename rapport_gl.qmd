@@ -25,7 +25,6 @@ nocite: "@*"
 
 <!--« header-includes: |
       \usepackage[bottom]{footmisc} » permet aux notes de bas de page d’être réellement en bas de page et non juste après la dernière ligne de texte (ce qui peut amener à des notes en milieu de page si le texte s’arrête à ce niveau).-->
-      
 <!--« text: |
       \usepackage[dvipsnames]{xcolor} » permet de mettre des portions de texte en couleur.-->
 
@@ -34,7 +33,7 @@ nocite: "@*"
 <!--« bibliography: references.bib
 citation: true
 link-citations: true 
-nocite: "@*" » est utile pour faire une liste bibliographique, pour plus d’explications, voir la section dédiée.--> 
+nocite: "@*" » est utile pour faire une liste bibliographique, pour plus d’explications, voir la section dédiée.-->
 
 <!--La présentation de la page de titre est codée ci-dessous en LaTeX ; page officielle de ce langage de programmation : https://www.latex-project.org/ (en anglais).-->
 
@@ -115,29 +114,31 @@ Attention : contrairement aux logiciels de traitement de texte les plus couramme
 
 # \# Titre de premier niveau
 
-## \#\# Titre de deuxième niveau
+## \## Titre de deuxième niveau
 
 Un titre de premier niveau est introduit dans le langage Quarto par 1 croisillon (#), un titre de deuxième niveau par 2 croisillons (##), de troisième niveau par 3 croisillons (###), etc. Attention, seuls les titres des trois premiers niveaux paraissent dans la table des matières ; pas les titres de quatrième niveau ou au-delà.
 
-Il faut un espace entre les croisillons et le titre choisi de la section.
+Il faut une espace[^espace] entre les croisillons et le titre choisi de la section.
 
-## \#\# Autre titre de deuxième niveau
+[^espace]: En typographie, le mot « espace » est féminin.
+
+## \## Autre titre de deuxième niveau
 
 Tulaliloo ti amo, chika banana ! Minion power, kaboom finale !
 
-### \#\#\# Exemple
+### \### Exemple
 
 Bee-do bee-do ! Fire in the pancako ! To the rescue-o, pronto-pronto !
 
-#### \#\#\# Exemple dans l’exemple
+#### \#### Exemple dans l’exemple
 
 Bananaaaa… oh no, le banana kaput ! Omelette du fromage… plan B.
 
-#### \#\#\#\# Autre exemple
+#### \#### Autre exemple
 
 Papoy boom-boom! Hahaha, tutu balala ! Bello ! Me want banana gelato subito !
 
-### \#\#\# Dernier exemple
+### \### Dernier exemple
 
 Tank yu veddy mucho, boss man ! Me zip-zap finisho la missiono !
 
@@ -145,9 +146,9 @@ Tank yu veddy mucho, boss man ! Me zip-zap finisho la missiono !
 
 # Utilité de Quarto et utilisation
 
-Un document Quarto sur R permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : [site officiel de Quarto](https://quarto.org)[^lien] (en anglais).
+Un document Quarto sur R permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : [site officiel de Quarto](https://quarto.org)[^1] (en anglais).
 
-[^lien]: Pour faire un lien cliquable vers une page externe, voir dans [la section sur les liens externes](#lienexterne).
+[^1]: Pour faire un lien cliquable vers une page externe, voir dans [la section sur les liens externes](#lienexterne).
 
 L’avantage par rapport aux autres logiciels de traitement de texte est que cela permet d’intégrer du code (ici R) directement dans le document et d’afficher les résultats (graphiques, tableaux, etc.) automatiquement. Cela favorise une reproductibilité scientifique : on peut voir et exécuter le code à l’origine des résultats.
 
@@ -155,7 +156,7 @@ Les résultats sont ainsi générés dynamiquement à partir des données. Si le
 
 ## Mix entre texte et code intégré
 
-Lorsqu’on clique sur le bouton **Render** de RStudio (ou combinaisons des touches Ctrl+Maj+K), un PDF est généré incluant à la fois le texte et le code intégré. On peut intégrer du code comme suit en l’encadrant entre une première ligne « ` ```{r}` » et une dernière « ` ``` ` » (« `` ` `` » est le symbole accent grave, appelé aussi *backtick* ou *backquote* depuis ses noms en anglais).
+Lorsqu’on clique sur le bouton **Render** de RStudio (ou combinaisons des touches Ctrl+Maj+K), un PDF est généré incluant à la fois le texte et le code intégré. On peut intégrer du code comme suit en l’encadrant entre une première ligne « ```` ```{r} ```` » et une dernière « ```` ``` ```` » (« `` ` `` » est le symbole accent grave, appelé aussi *backtick* ou *backquote* depuis ses noms en anglais).
 
 ```{r}
 1 + 1
@@ -172,9 +173,9 @@ On peut aussi ajouter des options au code exécutable comme ceci (derrière « `
 
 L’option « `echo: false` » désactive l’impression du code (seul le résultat final est affiché).
 
-Je peux arriver au même résultat avec la première ligne « ` ```{r}` » remplacé par « ` ```{r, echo=FALSE}` ». Pas besoin alors de ligne avec l’option.
+Je peux arriver au même résultat avec la première ligne « ```` ```{r} ```` » remplacé par « ```` ```{r, echo=FALSE} ```` ». Pas besoin alors de ligne avec l’option.
 
-On peut également faire l’inverse, masquer le résultat et afficher le code en remplaçant la première ligne « ` ```{r}` » par « ` ```{r, results="hide"}` ». Ou tout masquer en remplaçant la première ligne « ` ```{r}` » par « ` ```{r, include=FALSE}` ». Dans les deux derniers cas, les éléments du *chunk* sont bien exécutés.
+On peut également faire l’inverse, masquer le résultat et afficher le code en remplaçant la première ligne « ```` ```{r} ```` » par « ```` ```{r, results="hide"} ```` ». Ou tout masquer en remplaçant la première ligne « ```` ```{r} ```` » par « ```` ```{r, include=FALSE} ```` ». Dans les deux derniers cas, les éléments du *chunk* sont bien exécutés.
 
 Exemple avec seulement le résultat :
 
@@ -199,22 +200,26 @@ sqrt(2)^6
 L’exemple suivant est tiré du deuxième T.P. de « statistique avec R » du cours de 1A de 2024-2025.
 
 On charge des packages (`dplyr` et `ggplot2`).
+
 ```{r, include=FALSE}
 library(dplyr)
 library(ggplot2)
 ```
 
-Il est fréquent que les packages contiennent des bases de données. On va faire apparaître la liste des tables disponibles dans le package « dplyr » en lançant la commande suivante :
+Il est fréquent que les packages contiennent des bases de données. On va appeler la liste des tables disponibles dans le package « dplyr » en lançant la commande suivante :
+
 ```{r}
 data(package="dplyr")
 ```
 
-On va travailler sur la table « starwars ». Pour cela on charge la table avec l’instruction suivante :
+Puis on va travailler sur la table « starwars ». Pour cela on charge la table avec l’instruction suivante :
+
 ```{r}
 data("starwars")
 ```
 
-On veut maintenant étudier la relation entre le poids (« mass ») et la taille (« height »). On commence par enlever toutes les valeurs manquantes de la table pour ces 2 variables :
+Cette table comporte notamment des informations sur les personnages de la série de films *Star Wars*. On veut maintenant étudier la relation entre le poids (« mass ») et la taille (« height ») de ces personnages. On commence par enlever de la table tous les personnages avec au moins une valeur manquante pour ces deux variables :
+
 ```{r}
 starwars<-starwars %>% 
   filter(is.na(height)==FALSE,
@@ -222,6 +227,7 @@ starwars<-starwars %>%
 ```
 
 On représente la variable « mass » (ordonnées) en fonction de la variable « height » (abscisses) sous forme d’un nuage de points :
+
 ```{r}
 ggplot(data=starwars,
        aes(x = height, y= mass ))+
@@ -229,6 +235,7 @@ ggplot(data=starwars,
 ```
 
 On retire l’observation qui semble aberrante (au vu du graphique précédent) puis on refait le nuage de points entre « mass » et « height » :
+
 ```{r}
 ggplot(data=starwars %>% 
          filter(mass!=max(mass)),
@@ -236,17 +243,17 @@ ggplot(data=starwars %>%
   geom_point()
 ```
 
-Voir [dans les annexes](#starwars) le contenu de la table.
+Voir [dans les annexes](#starwars) à quoi ressemble le contenu de la table.
 
 \pagebreak
 
 ### Un dernier exemple avec mix entre texte et code intégré
 
-Autre exemple où j’use de la graine numéro *n* du générateur de nombres aléatoires. La graine (« seed » en anglais) permet d’obtenir une reproductibilité des résultats quand l’on fait appel à un processus aléatoire. Pour cela, il faut appeler à chaque fois la même graine (c’est-à-dire le même numéro de graine).
+Autre exemple où je « plante » la graine numéro *n* du générateur de nombres aléatoires. La graine (« seed » en anglais) permet d’obtenir une reproductibilité des résultats quand l’on fait appel à un processus aléatoire. Pour cela, il faut appeler à chaque fois la même graine (c’est-à-dire le même numéro de graine).
 
-Ci-dessous, on demande pour la graine numéro *n* :  
--- 31 nombres aléatoires selon la loi normale centrée réduite ;  
--- 31 nombres aléatoires entre 0 et 1 selon la loi uniforme ;  
+Ci-dessous, on demande pour la graine numéro *n* :\
+-- 31 nombres aléatoires selon la loi normale centrée réduite ;\
+-- 31 nombres aléatoires entre 0 et 1 selon la loi uniforme ;\
 -- 31 nombres entiers aléatoires tirés entre 1 et 10 inclus (avec remise).
 
 ```{r}
@@ -263,13 +270,13 @@ Celle (*idem*) de la loi uniforme est : **`r round(mean(x_loiuniforme), 2)`**.
 
 Celle (*idem*) du tirage des nombres entre 1 et 10 est : **`r round(mean(x_tirage), 2)`**.
 
-Si on choisit de relancer tous les calculs avec une autre graine, grâce à Quarto, pas besoin de tout retaper, on change la valeur de *n* dans le *chunk* et on recompile le document. On peut ainsi remplacer 101 par 288, 2045, etc. 
+Si on choisit de relancer tous les calculs avec une autre graine, grâce à Quarto, pas besoin de tout retaper, on change la valeur de *n* dans le *chunk* et on recompile le document. On peut ainsi remplacer le numéro de départ par 288, 12045, 52, etc.
 
-Pour avoir, en dehors d’un *chunk*, une phrase reprenant un résultat issu de code dans R, j’écris, entre deux accents graves (un au début et un à la fin), « `r` » (pour dire que je veux ce code dans R) suivi d’un espace et enfin du code R.  
-Pour le dernier résultat : « `` ` `` `r` `mean(x_tirage)` `` ` `` »  
-ou « `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` » si arrondi à deux chiffres après la « virgule[^virgule] ».
+Pour avoir, en dehors d’un *chunk*, une phrase reprenant un résultat issu de code dans R, j’écris, entre deux accents graves (un au début et un à la fin), « `r` » (pour dire que je veux ce code dans R) suivi d’une espace et enfin du code R.\
+Pour le dernier résultat : « `` ` `` `r` `mean(x_tirage)` `` ` `` »\
+ou « `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` » si arrondi à deux chiffres après la « virgule[^2] ».
 
-[^virgule]: à propos de virgule, ici R utilise la typographie anglaise pour les nombres et c’est le point qui est utilisé comme séparateur entre partie entière et partie décimale. Pour le remplacer par une virgule comme en français, cf. la [section sur les conventions typographiques](#virgule).
+[^2]: à propos de virgule, ici R utilise la typographie anglaise pour les nombres et c’est le point qui est utilisé comme séparateur entre partie entière et partie décimale. Pour le remplacer par une virgule comme en français, cf. la [section sur les conventions typographiques](#virgule).
 
 \pagebreak
 
@@ -291,15 +298,15 @@ Ensuite, le texte à colorer (en rouge ici, « red ») doit être précédé par
 
 Exemple : « `\textcolor{ForestGreen}{Ce texte est vert foncé.}` » pour « \textcolor{ForestGreen}{Ce texte est vert foncé.} »
 
-On peut choisir le noir, le blanc et 74 autres couleurs. Liste complète des couleurs dans la section 4 d’*[Extending LaTeX’s color facilities: the xcolor package](https://ctan.ceremade.dauphine.fr/macros/latex/contrib/xcolor/xcolor.pdf)* (lien externe).
+On peut choisir le noir, le blanc et 74 autres couleurs. Liste complète des couleurs dans la section 4 d’[*Extending LaTeX’s color facilities: the xcolor package*](https://ctan.ceremade.dauphine.fr/macros/latex/contrib/xcolor/xcolor.pdf) (lien externe).
 
 ### Parler « `code` »
 
-Lorsque l’on encadre une portion de texte avec un seul accent grave de chaque côté, ce qui est encadré est affiché dans une police à chasse fixe, c’est-à-dire une police où chaque caractère occupe le même espace horizontal que les autres caractères. C’est, dans les textes parlant informatique, un type de police souvent utilisé pour représenter le contenu du code utilisé. Exemples :
+Lorsque l’on encadre une portion de texte avec un seul accent grave de chaque côté, ce qui est encadré est affiché dans une police à chasse fixe, c’est-à-dire une police où chaque caractère occupe même espace horizontal que les autres caractères. C’est, dans les textes parlant informatique, un type de police souvent utilisé pour représenter le contenu du code utilisé. Exemples :
 
-- si on tape « `` ` `` `Machin` `` ` `` » dans le code, cela affiche « ` Machin ` » où le M majuscule n’est pas plus large ou le i minuscule pas moins large que les autres lettres ;
+-   si on tape « `` ` `` `Machin` `` ` `` » dans le code, cela affiche « `Machin` » où le M majuscule n’est pas plus large ou le i minuscule pas moins large que les autres lettres ;
 
-- alors que si on tape « `Machin` », ça affiche « Machin » dans la police choisie en début de document, idéalement dans une police où la chasse est différente pour chaque caractère.
+-   alors que si on tape « `Machin` », ça affiche « Machin » dans la police choisie en début de document, idéalement dans une police où la chasse est différente pour chaque caractère.
 
 ### Puce
 
@@ -309,50 +316,85 @@ Comme on peut le voir dans les deux exemples ci-dessus, dans le code, un saut de
 
 -- Si on veut réellement commencer la ligne par un tiret, il faut entamer la ligne par deux traits d’union comme pour cette phrase.
 
+
+### Principales différences entre typographies française et anglaise
+
+#### Espace et ponctuation
+
+En français (sauf français du Canada), les signes de ponctuation composés d’au moins deux éléments (« : », « ; », « ? », etc.) sont précédés par une espace (à l’exception des points de suspension et du guillemet ouvrant si celui-ci suit une apostrophe). En anglais, pas d’espace avant ces signes de ponctuation sauf pour le guillemet ouvrant.
+
+Pour les espaces avant les signes de ponctuation, le document Quarto sur R gère cela au moment où le PDF est créé. Ainsi, selon, si dans l’en-tête YAML, on a indiqué « lang: fr » ou « lang: en », les espaces seront respectivement automatiquement rajoutées ou supprimées.
+
+#### Guillemets
+
+Le style de guillemets n’est pas le même. Guillemets français : « texte » (avec espaces avant et après le texte). Guillemets anglais des États-Unis : “texte” (sans espaces). Guillemets anglais du Royaume-Uni : ‘texte’ (sans espaces). Les guillemets anglais des États-Unis sont souvent utilisés en français pour du texte entre guillemets imbriqués dans un extrait lui-même entre guillemets. Exemple :
+
+Il lui a alors répondu : « Mais vous m’aviez dit “on y va !” à ce moment-là ».
+
+Dans le PDF généré par un document Quarto sur R, le signe « `"` » (dit guillemet droit ou guillemet informatique) est automatiquement converti en guillemet anglais des États-Unis. Quarto arrive généralement à reconnaître quel signe est le guillemet ouvrant et quel autre signe est le guillemet fermant. De même le signe « `'` » (dit apostrophe droite ou apostrophe informatique) est automatiquement converti en guillemet anglais du Royaume-Uni ou en apostrophe normale (« `’` ») qui est une apostrophe plus soignée.
+
+Pour une typographie irréprochable dans un rapport en français, il faudra donc faire un copier-coller de guillemets français pour avoir les bons guillemets.
+
+#### Majuscules
+
+Dans les titres d’ouvrage, les titres en français se limitent généralement à une majuscule au premier mot quand les titres en anglais ont une majuscule à chaque mot important.
+
+Les noms de langues ont une lettre initiale minuscule en français, majuscule en anglais : « espagnol » et « arabe » mais « Spanish » et « Arabic ». Même différence pour les adjectifs de nationalité ou pour les noms de jours ou de mois (minuscule en français, majuscule en anglais).
+
+#### Abréviations
+
+Les abréviations en français se terminent généralement (pas toujours) par un point. Les abréviations anglaises souvent sans point (et il y a une différence entre les conventions américaines et britanniques). Ne pas hésiter à consulter des listes d’abréviations courantes pour ne pas se tromper.
+
 ### Décimales {#virgule}
 
 R utilise la typographie anglaise pour les nombres et c’est le point qui est utilisé comme séparateur entre partie entière et partie décimale.
 
-Dans un rapport en français, pour le remplacer par une virgule comme en français, écrire  
-« `` ` `` `r` \textcolor{red}{format(}`round(mean(x_tirage), 2)`\textcolor{red}{, decimal.mark = ",")}`` ` `` »  
-en rajoutant les éléments en rouge au lieu de  
+Dans un rapport en français, pour le remplacer par une virgule comme en français, écrire\
+« `` ` `` `r` \textcolor{red}{format(}`round(mean(x_tirage), 2)`\textcolor{red}{, decimal.mark = ",")}`` ` `` »\
+en rajoutant les éléments en rouge au lieu de\
 « `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` ».
 
 Cela affichera « **`r format(round(mean(x_tirage), 2), decimal.mark = ",")`** » au lieu de « **`r round(mean(x_tirage), 2)`** ».
+
+```{r}
+v <- 1000 + 5000
+w <- 10000 + 51425
+```
+
+Le premier résultat est `r v` et le second est `r w`. Comme on le voit ici, R n’utilise pas les séparateurs de milliers, mais si vous devez écrire un nombre avec beaucoup de chiffres, le séparateur de milliers est une espace en français et une virgule en anglais, respectivement : « 61 425 » et « 61,425 ».
 
 ## Présentation des paragraphes
 
 ### Passage à la ligne
 
-Pour passer à la ligne sans créer de nouveau paragraphe, terminer une ligne par deux espaces et appuyer sur « `Entrée` » afin d’écrire la ligne suivante.  
+Pour passer à la ligne sans créer de nouveau paragraphe, terminer une ligne par deux espaces et appuyer sur « `Entrée` » afin d’écrire la ligne suivante.\
 Comme ici : on peut le vérifier dans le code source en naviguant entre les deux lignes avec les flèches du clavier.
 
 ### Création d’un nouveau paragraphe
 
 Le plus simple (car le plus lisible) est de sauter une ligne en laissant une ligne vide.
 
-Si on passe à la ligne sans sauter de ligne et sans les deux espaces à la ligne précédente, cela écrira tout à la suite.
-Comme ce qui est écrit ici.
+Si on passe à la ligne sans sauter de ligne et sans les deux espaces à la ligne précédente, cela écrira tout à la suite. Comme ce qui est écrit ici.
 
-## Renvois
+## Renvois {#renvois}
 
 ### Notes de bas de page
 
-Pour faire une note de bas de page, il faut mettre à l’endroit souhaité un nom en chiffres ou en lettres précédé d’un accent circonflexe entre crochets comme ceci : « `[^5]` » et cela donne [^5] puis dans un paragraphe suivant, on fait le rappel de la note de la même façon avec le texte associé après deux-points.
+Pour faire une note de bas de page, il faut mettre à l’endroit souhaité un nom en chiffres ou en lettres précédé d’un accent circonflexe entre crochets comme ceci : « `[^5]` » et cela donne [^3] puis dans un paragraphe suivant, on fait le rappel de la note de la même façon avec le texte associé après deux-points.
 
-[^5]: Voici le contenu de la note de bas de page qui apparaîtra en bas de la même page.
+[^3]: Voici le contenu de la note de bas de page qui apparaîtra en bas de la même page.
 
-Test avec « `[^a]` »[^a].
+Test avec « `[^a]` »[^4].
 
-[^a]: Ça marche aussi avec une lettre.
+[^4]: Ça marche aussi avec une lettre.
 
-Test avec « `[^bidule]` »[^bidule].
+Test avec « `[^bidule]` »[^5].
 
-[^bidule]: Ça marche aussi avec une note qui porte un nom.
+[^5]: Ça marche aussi avec une note qui porte un nom.
 
-Test avec « `[^fan2foot]` »[^fan2foot].
+Test avec « `[^fan2foot]` »[^6].
 
-[^fan2foot]: Ça marche aussi avec une note qui porte un nom qui mixe chiffres et lettres.
+[^6]: Ça marche aussi avec une note qui porte un nom qui mixe chiffres et lettres.
 
 Comme on le voit, le document PDF généré numérote automatiquement les notes de page quel que soit le nom de la note. Et si on passe à la page suivante, la numérotation continue, on ne recommence pas à 1.
 
@@ -360,9 +402,9 @@ Comme on le voit, le document PDF généré numérote automatiquement les notes 
 
 Voici un lien interne vers la [page des références](#pagedesreferences). Le lien interne est écrit entre crochets tout de suite suivi (sans espace) entre parenthèses d’un mot-clef (mot précédé d’un croisillon) : « `[page des références](#pagedesreferences)` ». Ce mot-clef est répété à la section souhaitée, en l’occurrence derrière le titre de la section Références et entre accolades : « `{#pagedesreferences}` ».
 
-On peut aussi mettre ce lien interne dans une note de bas de page comme ceci[^ref].
+On peut aussi mettre ce lien interne dans une note de bas de page comme ceci[^7].
 
-[^ref]: Pour plus d’informations, se référer à la [page des références](#pagedesreferences).
+[^7]: Pour plus d’informations, se référer à la [page des références](#pagedesreferences).
 
 Dans l’exemple ci-dessus, c’est un cas très utile de renvoi vers les références. D’autres cas qui peuvent être très courants : renvoi vers les annexes ou tout bonnement vers une section particulière du rapport (pour comparer deux résultats notamment). Il faudra alors créer autant de mot-clefs entre accolades tout au long du texte pour chaque endroit vers lequel l’on devra pointer.
 
@@ -370,7 +412,7 @@ Dans l’exemple ci-dessus, c’est un cas très utile de renvoi vers les réfé
 
 Le lien externe fonctionne un peu de la même façon que le lien interne : entre crochets tout de suite suivi (sans espace) entre parenthèses de l’adresse de la page souhaitée.
 
-Exemple : « `[site officiel de l’Ensai](https://www.ensai.fr/)` » donne « [site officiel de l’Ensai](https://www.ensai.fr/) ». 
+Exemple : « `[site officiel de l’Ensai](https://www.ensai.fr/)` » donne « [site officiel de l’Ensai](https://www.ensai.fr/) ».
 
 ## Utilisation des références
 
@@ -378,7 +420,7 @@ Dans l’en-tête YAML de ce document, on a « `bibliography: references.bib` »
 
 Pour l’exemple, voici un extrait le contenu du fichier « references.bib » (extrait car la partie centrale remplacée par `[...]`) :
 
-```text
+``` text
 @article{calhamer1974,
   author    = {Allan B. Calhamer},
   title     = {The Invention of Diplomacy},
@@ -411,12 +453,13 @@ Pour l’exemple, voici un extrait le contenu du fichier « references.bib » (e
 }
 ```
 
-On peut voir dans la [page des références](#pagedesreferences), la présentation finale. On avait choisi de lister les références dans references.bib dans l’ordre chronologique ; attention, par défaut, cela les affiche dans le PDF dans l’ordre alphabétique des auteurs, cela ne respecte pas l’ordre initialement choisi (si on avait choisi de les ranger d’une certaine façon). 
+On peut voir dans la [page des références](#pagedesreferences), la présentation finale. On avait choisi de lister les références dans references.bib dans l’ordre chronologique ; attention, par défaut, cela les affiche dans le PDF dans l’ordre alphabétique des auteurs, cela ne respecte pas l’ordre initialement choisi (si on avait choisi de les ranger d’une certaine façon).
 
 Toujours dans l’en-tête YAML, « `nocite: "@*"` » permet de lister dans le PDF la totalité des références mentionnées dans references.bib. Sans cette ligne, seuls les éléments de la bibliographie listés simultanément dans references.bib et cités dans le corps du document seront listés dans le PDF.
 
 Enfin, pour choisir où les lister, rajouter le code suivant à l’emplacement voulu :
-```text
+
+``` text
 ::: {#refs}
 :::
 ```
@@ -433,18 +476,18 @@ Conor Kostick, historien irlandais et champion de ce jeu, a rédigé en 2015 *Th
 
 \pagebreak
 
+# Conclusion
+
+Écrire ici la conclusion du rapport.
+
+\pagebreak
+
 # Références {#pagedesreferences}
 
 Voici la liste de toutes les références bibliographiques utiles à la rédaction de ce rapport :
 
 ::: {#refs}
 :::
-
-\pagebreak
-
-# Conclusion
-
-Écrire ici la conclusion du rapport.
 
 \pagebreak
 
@@ -457,6 +500,7 @@ Utiliser des renvois depuis le corps du rapport vers cette section comme vu dans
 ## Contenu de la table « starwars » {#starwars}
 
 Affichage du contenu de la table « starwars » :
+
 ```{r}
 str(starwars)
 ```

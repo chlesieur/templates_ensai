@@ -17,7 +17,7 @@ link-citations: true
 nocite: "@*"
 ---
 
-<!--Cette première partie entre deux « --- » s’appelle un « YAML header » (nom en anglais aussi utilisé en français) ou un « en-tête YAML ».-->
+<!--Cette première partie ci-dessus entre deux « --- » s’appelle un « YAML header » (nom en anglais aussi utilisé en français) ou un « en-tête YAML ».-->
 
 <!--« lang: fr » à remplacer par « lang: en » si rapport rédigé en anglais. Définir la langue du document est utile pour la typographie (par exemple les espaces autour de la ponctuation ne sont pas les mêmes dans les deux langues), la langue de la table des matières, des dates, le cadre linguistique du PDF généré, etc.-->
 
@@ -35,7 +35,7 @@ citation: true
 link-citations: true 
 nocite: "@*" » est utile pour faire une liste bibliographique, pour plus d’explications, voir la section dédiée.-->
 
-<!--La présentation de la page de titre est codée ci-dessous en LaTeX ; page officielle de ce langage de programmation : https://www.latex-project.org/ (en anglais).-->
+<!--La présentation de la page de titre est codée ci-dessous en LaTeX qui est un langage supporté par les documents Quarto sur R ; sauf à vouloir innover la présentation, vous n’avez pas à apprendre le langage LaTeX. Page officielle de ce langage de programmation : https://www.latex-project.org/ (en anglais).-->
 
 \begin{titlepage}
 \centering
@@ -92,11 +92,21 @@ Jiminy Cricket\\
 
 \tableofcontents
 
-# Objectifs de ce document
+# Objectif de ce document
 
 Ce document sert de modèle pour les rapports de projets de première année à l’Ensai avec quelques recommandations et consignes de base pour la forme. Ce modèle ne traite pas du fond et, en aucun cas, ce document ne se substitue aux consignes données par chaque responsable de projet qui seront toujours prépondérantes par rapport aux éléments figurant ici.
 
-Une fois ce document vidé de son contenu, il en restera le « squelette » qui pourra servir comme base de départ à la rédaction de tout rapport
+Une fois ce document vidé par les étudiants de son contenu explicatif, il en restera le « squelette » qui pourra servir comme architecture de départ à la rédaction de tout rapport.
+
+Le contenu explicatif est dans le PDF mais aussi dans les commentaires figurant directement dans le document Quarto sur RStudio. De manière générale, on peut mettre des commentaires dans ce type de document de deux façons différentes selon l’endroit :
+
+- si dans une portion de code R, derrière un croisillon (« `#` »)[^croisillon] et une espace[^espace] ;
+
+[^croisillon]: Parfois appelé par erreur dièse mais le dièse a le symbole suivant « ♯ » différent de « # » ; parfois appelé aussi *hashtag* en français mais *hash* est un des noms du symbole en anglais et le *hashtag* désigne en anglais un mot-clef c’est-à-dire un mot collé tout de suite après un croisillon et servant de mot référence.
+
+[^espace]: En typographie, le mot « espace » est féminin.
+
+- si dans le texte hors portion R, entre « `<!--` » et « `-->` ».
 
 # Précisions sur la table des matières
 
@@ -118,11 +128,11 @@ Attention : contrairement aux logiciels de traitement de texte les plus couramme
 
 ## \## Titre de deuxième niveau
 
-Un titre de premier niveau est introduit dans le langage Quarto par 1 croisillon (#), un titre de deuxième niveau par 2 croisillons (##), de troisième niveau par 3 croisillons (###), etc. Attention, seuls les titres des trois premiers niveaux paraissent dans la table des matières ; pas les titres de quatrième niveau ou au-delà.
+Un titre de premier niveau est introduit dans le langage Quarto par 1 croisillon (« # »), un titre de deuxième niveau par 2 croisillons (« ## »), de troisième niveau par 3 croisillons (« ### »), etc.
 
-Il faut une espace[^espace] entre les croisillons et le titre choisi de la section.
+Attention, seuls les titres des trois premiers niveaux paraissent dans la table des matières ; pas les titres de quatrième niveau ou au-delà.
 
-[^espace]: En typographie, le mot « espace » est féminin.
+Il faut une espace entre les croisillons et le titre choisi de la section.
 
 ## \## Autre titre de deuxième niveau
 
@@ -146,15 +156,15 @@ Tank yu veddy mucho, boss man ! Me zip-zap finisho la missiono !
 
 # Utilité de Quarto et utilisation
 
-Un document Quarto sur R permet de mêler du texte et du code exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : [site officiel de Quarto](https://quarto.org)[^1] (en anglais).
+Un document Quarto sur RStudio permet de mêler du texte et du code R exécutable pour tout regrouper dans un seul document finalisé, comme ici un rapport en format PDF. Pour en savoir plus sur Quarto : [site officiel de Quarto](https://quarto.org)[^1] (en anglais).
 
 [^1]: Pour faire un lien cliquable vers une page externe, voir dans [la section sur les liens externes](#lienexterne).
 
-L’avantage par rapport aux autres logiciels de traitement de texte est que cela permet d’intégrer du code (ici R) directement dans le document et d’afficher les résultats (graphiques, tableaux, etc.) automatiquement. Cela favorise une reproductibilité scientifique : on peut voir et exécuter le code à l’origine des résultats.
+L’avantage par rapport aux autres logiciels de traitement de texte est que cela permet d’intégrer du code directement dans le document et d’afficher les résultats (graphiques, tableaux, etc.) automatiquement. Cela favorise une reproductibilité scientifique : on peut voir et exécuter le code à l’origine des résultats.
 
 Les résultats sont ainsi générés dynamiquement à partir des données. Si les données changent, il suffit de recompiler le document : tout se met à jour automatiquement (textes, graphiques, analyses…). Cela évite les erreurs de copier-coller ou les résultats obsolètes.
 
-## Mix entre texte et code intégré
+## Mix entre texte et code intégré {#mix}
 
 Lorsqu’on clique sur le bouton **Render** de RStudio (ou combinaisons des touches Ctrl+Maj+K), un PDF est généré incluant à la fois le texte et le code intégré. On peut intégrer du code comme suit en l’encadrant entre une première ligne « ```` ```{r} ```` » et une dernière « ```` ``` ```` » (« `` ` `` » est le symbole accent grave, appelé aussi *backtick* ou *backquote* depuis ses noms en anglais).
 
@@ -251,7 +261,7 @@ ggplot(data=starwars %>%
   geom_point()
 ```
 
-Voir [dans les annexes](#starwars) à quoi ressemble le contenu de la table.
+On peut voir [dans les annexes](#starwars) à quoi ressemble le contenu de la table à ce stade de l’exercice.
 
 \pagebreak
 
@@ -259,7 +269,7 @@ Voir [dans les annexes](#starwars) à quoi ressemble le contenu de la table.
 
 ### Un dernier exemple avec mix entre texte et code intégré {#appelaunresultatr}
 
-Autre exemple où on « plante » la graine numéro *n* du générateur de nombres aléatoires. La graine (« seed » en anglais) permet d’obtenir une reproductibilité des résultats quand l’on fait appel à un processus aléatoire. Pour cela, il faut appeler à chaque fois la même graine (c’est-à-dire le même numéro de graine).
+Autre exemple où on « plante » la graine numéro *n* de générateur de nombres aléatoires. La graine («\ seed\ » en anglais) permet d’obtenir une reproductibilité des résultats quand l’on fait appel à un processus aléatoire. Pour cela, il faut appeler à chaque fois la même graine (c’est-à-dire le même numéro de graine).
 
 Ci-dessous, on demande pour la graine numéro *n* :\
 -- 31 nombres aléatoires selon la loi normale centrée réduite ;\
@@ -294,7 +304,11 @@ ou « `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` » si arrondi à deux chiff
 
 ### Affichage de caractères spéciaux
 
-Points typographiques : pour que le symbole accent grave ne soit pas compris par R comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4). Pour les autres caractères spéciaux (« \* », « \\ », « \# », « \< »… liste non exhaustive), c’est la barre oblique inversée (« \\ »), appelée aussi *backslash* ou *antislash* qui sert à désactiver la fonction spéciale habituelle de ces caractères en Quarto en la mettant juste devant chacun d’eux.
+Points typographiques : pour que le symbole accent grave ne soit pas compris par Quarto comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4).
+
+Si la portion que l’on souhaite afficher comporte trois accents graves (comme pour le début ou la fin d’un *chunk*), on doit entourer cette portion avec quatre accents graves de chaque côté (cf. le début de [la section « Mix entre texte et code intégré »](#mix)).
+
+Pour les autres caractères spéciaux (« \* », « \\ », « \# », « \< »… liste non exhaustive), c’est la barre oblique inversée (« \\ »), appelée aussi *backslash* ou *antislash*, qui sert à désactiver la fonction spéciale habituelle de ces caractères en Quarto en la mettant juste devant chacun d’eux.
 
 ### Gras et italique
 
@@ -331,25 +345,33 @@ Comme on peut le voir dans les deux exemples ci-dessus, dans le code, un saut de
 
 #### Espace et ponctuation
 
-En français[^Canada], les signes de ponctuation dits doubles car composés de deux éléments (« : », « ; », « ? », « ! ») sont précédés par une espace. En anglais, pas d’espace avant ces signes de ponctuation.
+En français[^Canada], les signes de ponctuation dits doubles car composés de deux éléments (« : », « ; », « ? » et «\ !\ ») sont précédés par une espace. En anglais, pas d’espace avant ces signes de ponctuation.
 
 [^Canada]: Sauf en français du Canada.
 
-Pour les espaces avant les signes de ponctuation, le document Quarto sur R gère cela au moment où le PDF est créé. Ainsi, selon, si dans l’en-tête YAML, on a indiqué « lang: fr » ou « lang: en », les espaces seront respectivement automatiquement rajoutées ou supprimées.
+Pour les espaces avant les signes de ponctuation, le document Quarto sur R gère cela au moment où le PDF est créé selon, si dans l’en-tête YAML, on a indiqué « lang: fr » ou « lang: en ». Les espaces seront normalement automatiquement rajoutées si le français est la langue choisie ou supprimées pour l’anglais.
 
 #### Guillemets
 
-Le style de guillemets n’est pas le même. Guillemets français : « texte » (avec espaces avant et après le texte[^Canada]). Guillemets anglais des États-Unis : “texte” (sans espaces). Guillemets anglais du Royaume-Uni : ‘texte’ (sans espaces). Les guillemets anglais des États-Unis sont souvent utilisés en français pour du texte entre guillemets imbriqués dans un extrait lui-même entre guillemets. Exemple :
+Le style de guillemets n’est pas le même. Guillemets français : « texte » (avec espaces avant et après le texte[^Canada]). Guillemets anglais des États-Unis : “texte” (sans espaces). Guillemets anglais du Royaume-Uni\ : ‘texte’ (sans espaces). Les guillemets anglais des États-Unis sont souvent utilisés en français pour du texte entre guillemets imbriqués dans un extrait lui-même entre guillemets. Exemple :
 
-Il lui a alors répondu : « Mais vous m’aviez dit “on y va !” à ce moment-là ».
+*Il lui a alors répondu : « Mais vous m’aviez dit “on y va !” à ce moment-là ».*
 
 Dans le PDF généré par un document Quarto sur R, le signe « `"` » (dit guillemet droit ou guillemet informatique) est automatiquement converti en guillemet anglais des États-Unis. Quarto arrive généralement à reconnaître quel signe est le guillemet ouvrant et quel autre signe est le guillemet fermant. De même le signe « `'` » (dit apostrophe droite ou apostrophe informatique) est automatiquement converti en guillemet anglais du Royaume-Uni ou en apostrophe normale (« `’` ») qui est une apostrophe plus soignée.
 
 Pour une typographie irréprochable dans un rapport en français, il faudra donc faire un copier-coller de guillemets français pour avoir les bons guillemets.
 
+#### Espace insécable
+
+Attention, le PDF généré crée parfois des retours à la ligne après un guillemet ouvrant ou avant un guillemet fermant. Une barre oblique inversée (« `\` ») peut alors être mis devant une espace pour la transformer en espace insécable. Écrire donc `«\ texte\ »` à la place de `« texte »`. Rester attentif car l’espace insécable ne fonctionne pas toujours si le texte commence ou termine par un caractère spécial et non par une lettre ou un chiffre. Si le retour à la ligne se fait encore à un endroit non désiré, voir si l’usage de l’italique ou du gras n’est pas tout aussi pertinent que celui des guillemets ou si la phrase ne peut pas être formulée un peu différemment.
+
+Plus rarement, il peut y avoir des retours à la ligne non désirés en d’autres endroits qu’entre guillemets. On peut utiliser la même méthode avec la barre oblique inversée devant l’espace pour résoudre le problème.
+
 #### Majuscules
 
-Dans les titres d’ouvrage, les titres en français se limitent généralement à une majuscule au premier mot quand les titres en anglais ont une majuscule à chaque mot important.
+Pour les documents (articles, ouvrages, vidéos institutionnelles, etc.) à teneur informative, technique ou scientifique, les titres en français se limitent généralement à une majuscule au premier mot[^titre] quand les titres en anglais ont une majuscule à chaque mot important.
+
+[^titre]: Les œuvres à portée artistique ont des règles particulières pour les majuscules dans les titres mais seront rarement utiles dans un rapport universitaire. Si toutefois le besoin se fait sentir, on peut consulter les [conventions typographiques de Wikipédia en français](https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Conventions_typographiques#TITRES) qui compilent les normes les plus utilisées sur le sujet.
 
 Les noms de langues ont une lettre initiale minuscule en français, majuscule en anglais : « espagnol » et « arabe » mais « Spanish » et « Arabic ». Même différence pour les adjectifs de nationalité ou pour les noms de jours ou de mois (minuscule en français, majuscule en anglais).
 
@@ -377,7 +399,8 @@ Ici on demande dans une phrase d’afficher les deux valeurs ci-dessus de *v* et
 
 Pour contraindre Quarto à générer le nombre sans notation scientifique dans le PDF, on se sert d’une option supplémentaire dans la même fonction *format* déjà utilisé plus haut. Écrire alors « `` ` `` `r` `format(w, scientific = FALSE)` `` ` `` » pour afficher « **`r format(w, scientific = FALSE)`** »
 
-Problème qui apparaît, le séparateur de milliers n’est toujours pas utilisé. Il faut donc le rajouter que le rapport soit en français ou en anglais. Et rajouter une espace en français ou une virgule en anglais, respectivement : « 61 425 » et « 61,425 ». Écrire alors dans un texte en français « `` ` `` `r` `format(w, big.mark = " ", scientific = FALSE)` `` ` `` » pour afficher « **`r format(w, big.mark = " ", scientific = FALSE)`** ». Ou avec « `big.mark = ","` » si rapport en anglais.
+Problème qui apparaît, le séparateur de milliers n’est toujours pas utilisé. Il faut donc le rajouter que le rapport soit en français ou en anglais. Et rajouter une espace en français ou une virgule en anglais, respectivement : « 61 425 » et « 61,425 ». Écrire alors dans un texte en français « `` ` `` `r` `format(w, big.mark = " ", scientific = FALSE)` `` ` `` » pour afficher « **`r format(w, big.mark = " ", scientific = FALSE)`** ».\
+Ou avec « `big.mark = ","` » si rapport en anglais.
 
 ## Présentation des paragraphes
 
@@ -398,9 +421,9 @@ De la même manière que décrit dans la section précédente, lorsque l’on pa
 
 ### Notes de bas de page
 
-Pour faire une note de bas de page, il faut mettre à l’endroit souhaité un nom en chiffres ou en lettres précédé d’un accent circonflexe entre crochets comme ceci : « `[^6]` » et cela donne [^6] puis dans un paragraphe suivant, on fait le rappel de la note de la même façon avec le texte associé après deux-points.
+Pour faire une note de bas de page, il faut mettre à l’endroit souhaité un nom en chiffres ou en lettres précédé d’un accent circonflexe entre crochets comme ceci : « `[^8]` » et cela donne [^8] puis dans un paragraphe suivant, on fait le rappel de la note de la même façon avec le texte associé après deux-points.
 
-[^6]: Voici le contenu de la note de bas de page qui apparaîtra en bas de la même page.
+[^8]: Voici le contenu de la note de bas de page qui apparaîtra en bas de la même page.
 
 Quel que soit le nom choisi pour le renvoi vers les notes de bas de page, le document PDF généré numérote automatiquement les notes de page. Et si on passe à la page suivante, la numérotation continue, on ne recommence pas à 1.
 

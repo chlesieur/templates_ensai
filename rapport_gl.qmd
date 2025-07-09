@@ -306,7 +306,7 @@ ou « `` ` `` `r` `round(mean(x_tirage), 2)` `` ` `` » si arrondi à deux chiff
 
 Points typographiques : pour que le symbole accent grave ne soit pas compris par Quarto comme du code dans du texte, on doit l’entourer de chaque côté par deux accents graves (cf. le code de la section précédente : si on est actuellement dans le mode **Visual**, pour regarder ce code, cliquer sur le bouton **Source** de RStudio ou Ctrl+Maj+F4).
 
-Si la portion que l’on souhaite afficher comporte trois accents graves (comme pour le début ou la fin d’un *chunk*), on doit entourer cette portion avec quatre accents graves de chaque côté (cf. le début de [la section « Mix entre texte et code intégré »](#mix)).
+Si la portion que l’on souhaite afficher comporte trois accents graves (comme pour le début ou la fin d’un *chunk*), on doit entourer cette portion avec quatre accents graves de chaque côté pour les désactiver (cf. le début de [la section « Mix entre texte et code intégré »](#mix)).
 
 Pour les autres caractères spéciaux (« \* », « \\ », « \# », « \< »… liste non exhaustive), c’est la barre oblique inversée (« \\ »), appelée aussi *backslash* ou *antislash*, qui sert à désactiver la fonction spéciale habituelle de ces caractères en Quarto en la mettant juste devant chacun d’eux.
 

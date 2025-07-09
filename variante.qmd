@@ -253,7 +253,7 @@ starwars<-starwars %>%
 
 On représente la variable « mass » (ordonnées) en fonction de la variable « height » (abscisses) sous forme d’un nuage de points :
 
-```{r}
+```{r fig-nuage}
 ggplot(data=starwars,
        aes(x = height, y= mass ))+
   geom_point()
@@ -261,7 +261,7 @@ ggplot(data=starwars,
 
 On retire l’observation qui semble aberrante (au vu du graphique précédent) puis on refait le nuage de points entre « mass » et « height » :
 
-```{r}
+```{r fig-nuage2}
 ggplot(data=starwars %>% 
          filter(mass!=max(mass)),
        aes(x = height, y= mass ))+
@@ -463,6 +463,14 @@ knitr::kable(starwarstab, caption = "Extrait du jeu de données « starwars »")
 
 Sur la première ligne du *chunk*, on écrit « ```` ```{r tbl-star}```` » à la place de « ```` ```{r}```` ». On peut ainsi appeler le tableau dans du texte avec « `@tbl-star` » qui donnera « @tbl-star ».
 
+### Figures {#figures}
+
+Pour afficher une image : « `![Logo de l’Ensai](ensai_logo.png){#fig-logoensai}` ». Entre crochets le nom de l’image pour les lecteurs, entre parenthèses le nom du fichier, entre accolades le nom de l’image si on veut le rappeler dans le texte (même fonctionnement que les formules et les tableaux vus précédemment).
+
+![Logo de l’Ensai](ensai_logo.png){#fig-logoensai}
+
+Si on affiche un graphique depuis du code R, sur la première ligne du *chunk*, on écrit « ```` ```{r fig-nuage2}```` » à la place de « ```` ```{r}```` ». On peut ainsi appeler le graphique dans du texte avec «\ `@fig-nuage`\ » qui donnera « @fig-nuage2 » (qui est le deuxième nuage de points générés avec R plus haut).
+
 ## Présentation des paragraphes
 
 ### Passage à la ligne
@@ -492,7 +500,7 @@ Pour écrire tout un paragraphe avec un retrait à gauche plus important (c’es
 
 ## Renvois
 
-Plus haut, on a déjà vu les renvois du texte vers les [équations citées](#formule) ou vers les [tableaux mentionnés](#tableaux).
+Plus haut, on a déjà vu les renvois du texte vers les [équations citées](#formule), vers les [tableaux mentionnés](#tableaux) ou vers les [figures](#figures).
 
 ### Notes de bas de page
 

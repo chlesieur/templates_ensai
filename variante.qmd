@@ -43,16 +43,17 @@ nocite: "@*" » est utile pour faire une liste bibliographique, pour plus d’ex
 <!--La présentation de la page de titre est codée ci-dessous en LaTeX qui est un langage supporté par les documents Quarto sur RStudio ; sauf à vouloir innover la présentation, vous n’avez pas à apprendre le langage LaTeX à cette fin. Toutefois, selon la nature du projet, vous aurez peut-être à étudier davantage LaTeX pour rédiger des formules mathématiques ou pour améliorer la présentation de vos tableaux. Page officielle de ce langage de programmation : https://www.latex-project.org/ (en anglais). De nombreux autres sites également en français enseignent l’utilisation de LaTeX, dans son ensemble ou pour un usage particulier de ce langage.-->
 
 \begin{titlepage}
+\raggedright
+
+\includegraphics{logoencoin.png}\\
+
 \centering
-
-\includegraphics{ensai_logo.png}\\
-\vspace{1.0cm}
-
+\vspace{0.5cm}
 {\LARGE\textsc{Rapport de tel projet}}\\
 \vspace{0.5cm}
 {\large Élèves 1A}
 
-\vspace{2.5cm}
+\vspace{1.5cm}
 
 \rule{\textwidth}{0.5mm}\\
 \vspace{0.8cm}
@@ -60,7 +61,7 @@ nocite: "@*" » est utile pour faire une liste bibliographique, pour plus d’ex
 \vspace{0.8cm}
 \rule{\textwidth}{0.5mm}\\
 
-\vspace{2.5cm}
+\vspace{1.5cm}
 
 \begin{flushleft}
 \emph{Étudiant·e·s :}\\
@@ -73,10 +74,11 @@ Elsa d’Arendelle\\
 \begin{flushright}
 \emph{Responsable :}\\
 la Fée bleue\\
-\vspace{1.0cm}
+\vspace{0.5cm}
 \emph{Encadrant(e) :}\\
 Jiminy Cricket\\
 \end{flushright}
+
 
 \vfill 
 \begin{center}

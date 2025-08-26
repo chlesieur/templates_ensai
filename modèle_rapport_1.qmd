@@ -45,7 +45,7 @@ nocite: "@*" » est utile pour faire une liste bibliographique, pour plus d’ex
 \begin{titlepage}
 \centering
 
-\includegraphics{ensai_logo.png}\\
+\includegraphics{ressources/ensai_logo_1.png}\\
 \vspace{1.0cm}
 
 {\LARGE\textsc{Rapport de tel projet}}\\
@@ -463,9 +463,9 @@ Sur la première ligne du *chunk*, on écrit « ```` ```{r tbl-star}```` » à l
 
 ### Figures {#figures}
 
-Pour afficher une image : « `![Logo de l’Ensai](ensai_logo.png){#fig-logoensai}` ». Entre crochets le nom de l’image pour les lecteurs, entre parenthèses le nom du fichier, entre accolades le nom de l’image si on veut le rappeler dans le texte (même fonctionnement que les formules et les tableaux vus précédemment).
+Pour afficher une image : « `![Logo de l’Ensai](ressources/ensai_logo_1.png){#fig-logoensai}` ». Entre crochets le nom de l’image pour les lecteurs, entre parenthèses le nom du fichier, entre accolades le nom de l’image si on veut le rappeler dans le texte (même fonctionnement que les formules et les tableaux vus précédemment).
 
-![Logo de l’Ensai](ensai_logo.png){#fig-logoensai}
+![Logo de l’Ensai](ressources/ensai_logo_1.png){#fig-logoensai}
 
 Si on affiche un graphique depuis du code R, sur la première ligne du *chunk*, on écrit « ```` ```{r fig-nuage2}```` » à la place de « ```` ```{r}```` ». On peut ainsi appeler le graphique dans du texte avec «\ `@fig-nuage`\ » qui donnera « @fig-nuage2 » (qui est le deuxième nuage de points générés avec R plus haut).
 
@@ -496,7 +496,7 @@ Pour écrire tout un paragraphe avec un retrait à gauche plus important (c’es
 
 >>> si un triangle *ABC* est rectangle en *C*, alors *AB² = AC² + BC²*.
 
-## Renvois
+## Renvois {#renvois-intro}
 
 Plus haut, on a déjà vu les renvois du texte vers les [équations citées](#formule), vers les [tableaux mentionnés](#tableaux) ou vers les [figures](#figures).
 
